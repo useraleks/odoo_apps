@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_ok">
+        <div class="header">
+        <link rel="stylesheet" href="/wizard_reporting/static/src/css/style.css"/>
+            <div class="row" aling="center;" style="report_header_style; padding-top: 135px; padding-left: 375px;" >
+                <p aling="center" style="padding-top: 3pt;padding-bottom: 2pt;text-indent: 0pt;text-align: center;"></p>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-out="0"/>
+        </div>
+    </template>
+
+    <template id="reporte_cuadro_de_despachos">
+        <t t-call="web.html_container">
+                <t t-call="wizard_reporting.external_ok">
+                <link rel="stylesheet" href="/wizard_reporting/static/src/css/style.css"/>
+
+                <div style="padding-left: 30pt;">
+                    <table style="width: 100%; height: auto;" cellspacing="0">
+                        <tr style="height:16pt">
+                            <td style="width:120pt; border-top-style:solid; border-top-width:1pt; border-bottom-style:solid; border-bottom-width:1pt; border-left-style:solid; border-left-width:1pt; border-right-style:solid; border-right-width:1pt; background-color:#FFFF00; height: 16px;" colspan="76">
+                                <p style="color: #2b6eec; font-size: 10pt; text-align: center; margin:0;"><strong>CUADRO DE DESPACHOS</strong></p>
+                            </td>
+                        </tr>
+                        <tr style="height:14pt">
+                            <td style="width:150pt; border-top-style:solid; border-top-width:1pt; border-bottom-style:solid; border-bottom-width:1pt; border-left-style:solid; border-left-width:1pt; border-right-style:solid; border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>CLIENTE:</strong></p>
+                            </td>
+                            <td style="width:90pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>ESTATUS:</strong></p>
+                            </td>
+                            <td style="width:63pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>TAMAÑO/PESO:</strong></p>
+                            </td>
+                            <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>CONTENEDOR:</strong></p>
+                            </td>
+                            <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>NAVIERA:</strong></p>
+                            </td>
+                            <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>PILOTOS:</strong></p>
+                            </td>
+                            <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>SELECTIVO:</strong></p>
+                            </td>
+                            <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>DIRECCION:</strong></p>
+                            </td>
+                            <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>SEGURIDAD:</strong></p>
+                            </td>
+                            <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color:#2b6eec; height: 14px;" colspan="6">
+                                <p class=".s1" style="color: white; font-size: 7pt; text-align: center; margin:0;"><strong>PEAJE:</strong></p>
+                            </td>
+                        </tr>
+                        <t t-foreach="ordenes" t-as="line">
+                            <tr style="height:30pt">
+                                <td style="width:120pt; border-top-style:solid; border-top-width:1pt; border-bottom-style:solid; border-bottom-width:1pt; border-left-style:solid; border-left-width:1pt; border-right-style:solid; border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line['customer_concatenate']"></t></strong></p>
+                                </td>
+                                <td style="width:90pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 10pt; text-align: center; margin:0;"><strong><t t-esc="line['date_status']"></t></strong></p>
+                                </td>
+                                <td style="width:63pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_peso', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('contenedor_no_ok', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_naviera', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('pilot_removes_dock', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_selectivo', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt; background-color: lightblue; height: 14px;" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_direccin_de_entrega', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:80pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_seguridad', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                                <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-left-style:solid;border-left-width:1pt;;border-right-style:solid;border-right-width:1pt" colspan="6">
+                                    <p class=".s1" style="color: black; font-size: 8pt; text-align: center; margin:0;"><strong><t t-esc="line.get('x_studio_peaje', '') if isinstance(line, dict) else ''"></t></strong></p>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="vehicle_reception_receipt_template_view">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<br/><br/><br/><br/><br/>
+						<div class="row">
+							<div class="col-xs-5">
+								<table>
+									<tr>
+										<td style="width: 100%; height: 22px; padding-left:10px; font-size: 20px;">
+											<b><span>Establecimiento</span></b>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px; ">
+											<span t-field="o.client_id.name"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.street"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.street2"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<div style="width: 100%">
+												<span style="width: 40%" t-field="o.client_id.city"/>,
+												<span style="width: 20%" t-field="o.client_id.state_id.code"/>,
+												<span style="width: 40%" t-field="o.client_id.zip"/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.country_id"/>
+										</td>
+									</tr>
+									
+								</table>
+							</div>
+							<div class="col-xs-3">
+								<table style="width:100%">
+									<tr>
+										<td style="padding-left:10px; height: 22px; padding-top: 5px; font-size: 20px;">
+											<strong>Piloto</strong>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-left:10px; text-align: left;">
+											<span t-field="o.driver"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-left:10px; font-size: 20px;">
+											<strong>Tel: </strong>
+											<span t-field="o.driver_phone_id"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-xs-3">
+								<table style="width:100%">
+									<tr style="height:22px;">
+										<td style="width:16%;padding:3px;padding-left:20px; font-size: 20px;">
+											<b><span >Fecha de Recepcion</span></b>
+										</td>
+									</tr>
+									<tr style="height: 22px">
+										<td style="padding:3px;padding-left:20px;">
+											<span t-field="o.receipt_date"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+							
+						<h3 style="margin-top: 30px; font-weight: bold; font-size: 30px;">
+							<span t-if="o.sequence">Recepción  </span>
+							<span t-field="o.sequence"/>
+						</h3>		
+						<div>
+							<table style="width: 100%; margin-top: 50px;font-size:12;text-align: center">
+								<thead>
+									<tr style="height: 22px; border-bottom: 2px solid black;">
+										<th style="width:25%;padding:3px; text-align: left;font-size: 25px;">
+											<b><span>VEHICULO</span></b>
+										</th>
+										<th style="width:20%;padding:3px; text-align: center;font-size: 25px;">
+											<b><span>NÚMERO DE MODELO</span></b>
+										</th>
+										<th style="width:15%;padding:3px; text-align: center;font-size: 25px;">
+											<b><span>NÚMERO DE SERIE</span></b>
+										</th>
+										<th style="width:15%;padding:3px; text-align: center;font-size: 25px;">
+											<b><span>ODOMETRO</span></b>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.vehicle_reception_line" t-as="line" style="height: 22px; border-color: #9D9D90;font-size:20">
+										<td style="padding:5px; text-align: left; font-size: 20px;">
+											<span t-if="line.fleet_id" t-field="line.fleet_id.name"></span>
+											<span t-if="line.fleet_id is False and line.license_plate" t-field="line.license_plate"></span>
+										</td>
+										<td style="padding:5px; font-size: 20px;">
+											<span t-if="line.fleet_id" t-field="line.fleet_id.name"></span>
+											<span t-if="line.fleet_id is False and line.model_id.name" t-field="line.model_id.name"></span>
+										</td>
+
+										<td style="padding:5px; font-size: 20px;">
+											<span t-if="line.fleet_id" t-field="line.fleet_id.name"></span>
+											<span t-if="line.fleet_id.name is False and line.vin_sn" t-field="line.vin_sn"></span>
+										</td>
+
+										<td style="padding:5px; font-size: 20px;">
+											<span t-field="o.odometer"></span>
+
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+							<div t-if="o.description" class="col-xs-12" style="margin-top:10%;width:100%">
+								<b>Nota de la recepcion:</b><span t-field="o.description"></span>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 100px;">
+							<span style="font-size: 20px; font-weight: bold;">DETALLES DE LA RECEPCION:</span>
+						</div>
+						<div class="row">
+							<table style="width: 100%; margin-top: 20px;">
+								<tr t-foreach="o.vehicle_reception_line" t-as="line" style="font-size: 18px;">
+									<th style="width: 25%; height: 25px;border-right: 1px solid black; font-size">
+										<b>
+											<span t-if="line.fleet_id" t-field="line.fleet_id.name"/>
+											<span t-if="line.fleet_id is False and line.license_plate" t-field="line.license_plate"/>
+										</b>
+									</th>
+									<td style="padding-left: 10px; font-size: 20px;">
+										<span t-field="o.description"></span>
+									</td>
+								</tr>
+							</table>
+						</div>                        
+						<div class="col-xs-12" style="width:100%; margin-top: 300px;">
+							<table style="width: 100%;">	
+								<tr>					
+									<td style="font-size: 30px;">
+										<span style="border-top: 1px solid; text-size: 10px;"><span t-field="o.supervisor_id"/></span>
+									</td>
+									<td style="font-size: 30px;">
+										<span style="border-top: 1px solid;float:right; text-size: 10px;" ><span t-field="o.driver"/></span>
+									</td>
+
+								</tr>
+							</table>
+						</div>						
+					
+				</div>
+			</t>
+		</template>
+
+		<template id="machi_repa_rece_temp_vehicule_id">
+			<t  t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="vehicle_reception.vehicle_reception_receipt_template_view" t-lang="o.client_id.lang"/>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

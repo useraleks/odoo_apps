@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="stock_forecasted_header_inherit" inherit_id="stock.ForecastedHeader">
+            <xpath expr="//div[text()='On Hand']" position="replace">
+                Reemplazo
+            </xpath>
+        </template>
+    </data>
+</odoo>

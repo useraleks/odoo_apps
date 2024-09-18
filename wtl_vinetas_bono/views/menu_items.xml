@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_vineta_bono" model="ir.actions.act_window">
+            <field name="name">Gestion de Vinetas</field>   
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vineta.bono</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Gestion de viñetas
+                </p>
+                <p>
+                    Click 'Nuevo' para crear una nueva viñeta
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vineta_bono" model="ir.actions.act_window">
+            <field name="name">Viñetas Bono</field>   
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vineta.bono</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Viñetas Bono
+                </p>
+                <p>
+                    Click 'Nuevo' para crear una nueva viñeta
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vineta_payment" model="ir.actions.act_window">
+            <field name="name">Pago de viñetas</field>   
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vineta.payment</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Viñetas Bono
+                </p>
+                <p>
+                    Click 'Nuevo' para crear una nueva viñeta
+                </p>
+            </field>
+        </record>
+    
+        <menuitem id="menu_vineta_bono" name="Viñetas Bono" sequence="0"
+            action="action_vineta_bono" web_icon="wtl_vinetas_bono,static/description/icon.png" groups="wtl_vinetas_bono.group_vineta_bono_access"/>
+
+        <menuitem id="menu_vineta_payment" name="Pago de viñetas" parent="menu_vineta_bono" action="action_vineta_payment" groups="wtl_vinetas_bono.group_vineta_bono_payment_access"/>    
+        
+    
+    </data>
+    
+</odoo>

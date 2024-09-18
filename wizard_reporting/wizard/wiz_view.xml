@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+    	<record id="wiz_general_reporting_form" model="ir.ui.view">
+			<field name="name">wiz_general_reporting_form</field>
+			<field name="model">wiz.general.reporting</field>
+			<field name="arch" type="xml">
+                <form string="Reporteria">
+                    <group>
+                        <field name="type_of_report"/>
+                    </group>
+                    <group col="4">
+                        <field name="initial_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="print_reporting" string="Imprimir PDF" type="object" class="oe_highlight"/>
+                        <button name="print_reporting_excel" string="Imprimir Excel" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+			</field>
+		</record>
+
+        <record id="general_reporting_window" model="ir.actions.act_window">
+            <field name="name">Reporteria General</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wiz.general.reporting</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wiz_general_reporting_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_reporting_renting" name="Reporteria" parent="sale_renting.rental_menu_root" sequence="20"
+            action="general_reporting_window" />
+
+    </data>
+</odoo>

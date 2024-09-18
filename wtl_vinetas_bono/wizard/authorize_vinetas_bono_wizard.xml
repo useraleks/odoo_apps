@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_authorize_vinetas_bono_form" model="ir.ui.view">
+            <field name="name">view_authorize_vinetas_bono_form</field>
+            <field name="model">authorize.vinetas.bono.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Autorizacion de viñetas bono">
+                    <group name="group_tup">
+                        <separator string="Entregas ya autorizadas"/>
+                            <group name="group_left">
+                                <field name="operation_id"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="sale_id"/>
+                            </group>
+                        </group>
+                        <group>
+                        </group>
+                    <footer>
+                        <button name="authorize_vinetas_bono" string="AUTORIZAR VIÑETAS" type="object" class="btn-primary" data-hotkey="g"/>
+                        o
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_authorize_vinetas_bono" model="ir.actions.act_window">
+            <field name="name">Autorizar Vinetas Bono</field>
+            <field name="res_model">authorize.vinetas.bono.wizard</field>
+            
+            <field name="view_mode">form</field>
+			<field name="view_id" ref="view_authorize_vinetas_bono_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

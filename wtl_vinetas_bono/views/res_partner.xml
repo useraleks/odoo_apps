@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="res_partner_viñeta_bono">
+      <field name="name">res_partner_viñeta_bono</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='internal_notes']" position="after">
+            <page name="viñeta_bono" string="Viñeta Bono" groups="wtl_vinetas_bono.group_show_vineta_window_partner">
+                <group>
+                    <field name="apply_for_vineta"/>
+                    <field name="partner_pricelist_id"/>
+                </group>
+            </page>
+        </xpath>
+        <xpath expr="//button[@name='schedule_meeting']" position="after">
+          <button type="object" name="button_view_vinetas_bono" class="oe_stat_button" icon="fa-barcode" groups="wtl_vinetas_bono.group_access_contact_vinetas_bono">
+						<field name="count_vinetas" widget="statinfo" string="Viñetas Bono"/>
+					</button>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

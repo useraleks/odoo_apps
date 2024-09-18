@@ -1,0 +1,16 @@
+.s1{
+    color: #ffffff;
+}
+.s2{
+    font-family: CourierPrime-Bold;
+}
+.s3{
+    font-family: CourierPrime-BoldItalic;
+}
+.s4{
+    font-family: CourierPrime-Italic;
+}
+p {
+    margin: 0;
+    padding: 0;
+}

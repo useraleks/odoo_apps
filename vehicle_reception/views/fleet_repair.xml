@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+            <record id="view_fleet_repair_ids" model="ir.ui.view">
+            <field name="name">view_fleet_repair_branch_ids</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_repair_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='fleet_id']" position="after">
+                        <field name="recepcion_id" invisible="1"/>
+                        <field name="recepciones_count" invisible="1"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

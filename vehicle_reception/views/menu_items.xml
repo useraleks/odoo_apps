@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+    <!--Menuitems-->        
+		<menuitem id="menu_main_reception_vehicle" name="Vehicle Reception" sequence="50" web_icon="vehicle_reception,static/description/icon.png"/>
+		<menuitem name="Vehicle Reception" parent="menu_main_reception_vehicle" id="menu_sub_reception_vehicle" sequence="3"/>
+		
+		<menuitem name="Vehicle Reception" parent="menu_sub_reception_vehicle" id="menu_reception_vehicle_submenu" sequence="3" action="action_reception_vehicle_tree_view"/>
+
+		<record id="vehicle_reception.menu_main_reception_vehicle" model="ir.ui.menu">
+			<field name="groups_id" eval="[(5,0),(4, ref('campos_car_repair.administrador_car_repair'))]"/>
+		</record>
+
+		<record id="car_repair_industry.menu_main_car_repair" model="ir.ui.menu">
+			<field name="groups_id" eval="[(5,0),(4, ref('campos_car_repair.administrador_car_repair'))]"/>
+		</record>
+
+    </data>
+</odoo>

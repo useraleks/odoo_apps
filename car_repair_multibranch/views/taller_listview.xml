@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="taller_tree_inherit_ok" model="ir.ui.view">
+            <field name="name">taller_tree_inherit_ok</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_repair_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="sequence" string="Referencia" optional="show"/>
+                </xpath>
+            </field>
+    </record>
+
+    <record id="taller_dig_tree_inherit_ok" model="ir.ui.view">
+            <field name="name">taller_dig_tree_inherit_ok</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_diagnose_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="service_rec_no" string="Referencia" optional="show"/>
+                </xpath>
+            </field>
+    </record>
+</odoo>

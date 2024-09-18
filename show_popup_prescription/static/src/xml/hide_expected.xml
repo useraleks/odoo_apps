@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//th[text()='Expected']" position="replace">
+            <th>No disponible</th>
+        </xpath>
+        <xpath expr="//td[@t-esc='env.pos.format_currency(defaultCashDetails.amount)']" position="replace">
+            <td><span>0</span></td>
+        </xpath>
+        <xpath expr="//td[@t-esc='env.pos.format_currency(defaultCashDetails.opening)']" position="replace">
+            <td><span>0</span></td>
+        </xpath>
+        <xpath expr="//td[@t-esc='env.pos.format_currency(pm.amount)']" position="replace">
+            <td><span>0</span></td>
+        </xpath>
+    </t>
+</templates>

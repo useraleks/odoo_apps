@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="product_pricelist_viñeta_bono">
+      <field name="name">product_pricelist_viñeta_bono</field>
+      <field name="model">product.pricelist</field>
+      <field name="inherit_id" ref="product.product_pricelist_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='pricelist_settings']" position="after">
+            <group name="vineta_bono_settings">
+                <field name="is_for_vineta"/>
+            </group>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

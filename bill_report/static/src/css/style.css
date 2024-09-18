@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+.centered-image-container {
+    position: relative;
+}
+
+.centered-image {
+    position: absolute;
+    top: 250px; /* Ajusta el valor para bajar la imagen más abajo */
+    left: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+p {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 8pt;
+    margin: 0pt;
+}
+
+.s1 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14pt;
+}
+
+.s2 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+.s3 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+.s4 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+.s5 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 9.5pt;
+}
+
+.s6 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 8pt;
+}
+
+.s7 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 8pt;
+}
+
+.s8 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 9pt;
+}
+
+.s9 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 9.3pt;
+}
+
+.line-spacing {
+    line-height: 14.5pt; /* Ajusta este valor para cambiar el espacio entre líneas */
+}
+
+.product-name {
+    word-break: break-word;
+}
+
+.quantity, .price {
+    text-align: right;
+}
+
+table, tbody {
+    vertical-align: top;
+    overflow: visible;
+}

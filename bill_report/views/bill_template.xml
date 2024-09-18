@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_ok">
+        <div class="header">
+        <link rel="stylesheet" href="/bill_report/static/src/css/style.css"/>
+            <div class="row" aling="center;" style="report_header_style; padding-top: 135px; padding-left: 375px;" >
+                <p aling="center" style="padding-top: 3pt;padding-bottom: 2pt;text-indent: 0pt;text-align: center;">DOCUMENTO TRIBUTARIO ELECTRONICO</p>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-out="0"/>
+        </div>
+    </template>
+
+    <template id="fel_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="bill_report.external_ok">
+                <div class="centered-image-container">
+                    <div class="centered-image">
+                        <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'"><img src="/bill_report/static/src/img/sello.PNG" style="width: 950px; height: auto;" /></span>
+                    </div>
+                </div>
+                <link rel="stylesheet" href="/bill_report/static/src/css/style.css"/>
+                        <table width="935" style="border-collapse:collapse;margin-left:5.125pt" cellspacing="0">
+                        <div class="page">
+                            <div class="row">
+                            <thead>
+                                <tr style="height:61pt repeat-header: true;">
+                                    <td style="width:93pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="">
+                                        <p style="text-indent: 0pt;text-align: left;">
+                                            <br/>
+                                        </p>
+                                        <p style="padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;">
+                                            <span>
+                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td>
+                                                            <img style="width: 115px; height: auto; margin-left: 10px; margin-right: 10px; margin-bottom: 5px;" src="/bill_report/static/src/img/transpesadilogo.jpg"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td style="width:482pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="8">
+                                        <p class="s1" style="padding-top: 1pt;padding-left: 95pt;padding-right: 188pt;text-indent: 0pt;text-align: center;">FACTURA</p>
+                                        <p class="s2" style="padding-top: 3pt;padding-left: 95pt;padding-right: 193pt;text-indent: 0pt;text-align: center;">Serie: <t t-esc="o.fel_serie"></t> Numero: <t t-esc="o.fel_no"></t></p>
+                                        <p class="s3" style="padding-top: 4pt;padding-left: 130pt;text-indent: 0pt;text-align: left;">Numero de Autorización: <t t-esc="o.uuid"></t></p>
+                                        <p class="s4" style="padding-top: 2pt;padding-left: 95pt;padding-right: 190pt;text-indent: 0pt;text-align: center;">Fecha de Emisión: <t t-esc="o.invoice_date.strftime('%d/%m/%Y')"></t></p>
+                                    </td>
+                                </tr>
+                            </thead>
+                            </div>
+                        </div>
+                        <tr style="height:13pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-left: 228pt;padding-right: 199pt;text-indent: 0pt;text-align: center;">DATOS DEL VENDEDOR</p>
+                            </td>
+                        </tr>
+                        
+                    <tr style="height:13pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="2">
+                                <p class="s9" style="padding-left: 29pt;text-indent: 0pt;text-align: left;">NIT del contribuyente</p>
+                            </td>
+                            <td style="width:auto;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="4">
+                                <p class="s9" style="padding-top: 2pt;padding-left: 48pt;text-indent: 0pt;text-align: left;">Nombre, razón o denominación social del contribuyente</p>
+                            </td>
+                            <td style="width:4pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr style="height:12pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-left: 34pt;padding-right: 42pt;text-indent: 0pt;text-align: center;">6438197-8</p>
+                            </td>
+                            <td style="width:450pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">TRANSPESADI SOCIEDAD ANONIMA</p>
+                            </td>
+                        </tr>
+                        <tr style="height:19pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-left: 42pt;text-indent: -36pt;text-align: center;">NOMBRE DEL ESTABLECIMIENTO COMERCIAL</p>
+                            </td>
+                            <td style="width:350pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-top: 3pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">TRANSPORTES PESADOS DIEGO</p>
+                            </td>
+                        </tr>
+                        <tr style="height:18pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-top: 1pt;padding-left: 41pt;padding-right: 41pt;text-indent: 0pt;text-align: center;">DIRECCION</p>
+                            </td>
+                            <td style="width:550pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">COLONIA PIEDRAS NEGRAS PETROMAYA, PUERTO BARRIOS, IZABAL</p>
+                            </td>
+                        </tr>
+                        <tr style="height:13pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-top: 2pt;padding-left: 228pt;padding-right: 212pt;text-indent: 0pt;text-align: center;">DATOS DEL COMPRADOR</p>
+                            </td>
+                        </tr>
+                        <tr style="height:14pt">
+                            <td style="width:93pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-top: 2pt;padding-left: 31pt;padding-right: 31pt;text-indent: 0pt;text-align: center;">NIT</p>
+                            </td>
+                            <td style="width:482pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-top: 1pt;padding-left: 79pt;text-indent: 0pt;text-align: left;">Nombre, razón o denominación social del contribuyente</p>
+                            </td>
+                        </tr>
+                        <tr style="height:12pt">
+                            <td style="width:93pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-top: 2pt; padding-left: 31pt;padding-right: 32pt;text-indent: 0pt;line-height: 8pt;text-align: center;"><t t-esc="o.partner_id.vat"></t></p>
+                            </td>
+                            <td style="width:482pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-left: 10pt;text-indent: 0pt;text-align: left;"><t t-esc="o.customer_name"></t></p>
+                            </td>
+                        </tr>
+                        <tr style="height:12pt">
+                            <td style="width:93pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="text-indent: 0pt;text-align: center;">DIRECCION</p>
+                            </td>
+                            <td style="width:482pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s6" style="padding-left: 10pt;text-indent: 0pt;line-height: 7pt;text-align: left;"><t t-esc="o.customer_address"></t></p>
+                            </td>
+                        </tr>
+                        <tr style="height:8pt">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="height:11pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-top: 1pt;padding-left: 228pt;padding-right: 209pt;text-indent: 0pt;line-height: 8pt;text-align: center;">DESCRIPCION DEL DOCUMENTO</p>
+                            </td>
+                        </tr>
+                        <tr style="height:22pt">
+                            <td style="width:0pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="5">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                </p>
+                                <p class="s7" style="padding-left: 48pt;text-indent: 0pt;text-align: center;">DESCRIPCION</p>
+                            </td>
+                            <td style="width:40pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                                <p style="text-indent: 0pt;text-align: center; margin-right: 5px">
+                                </p>
+                                <p class="s7" style="margin-left: 4px; margin-right: 4px; text-indent: 0pt;text-align: center;">CONTENEDOR</p>
+                            </td>
+                            <td style="width:40pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                                <p style="text-indent: 0pt;text-align: center;">
+                                </p>
+                                <p class="s7" style="margin-left: 4px; margin-right: 4px; text-indent: 0pt;text-align: center;">CANTIDAD</p>
+                            </td>
+                            <td style="width:40pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                                <p class="s7" style="margin-left: 4px; margin-right: 4px; padding-top: 3pt;text-indent: 2pt;line-height: 108%;text-align: center;">PRECIO UNITARIO</p>
+                            </td>
+                            <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+                                <p class="s3" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">TOTAL Q</p>
+                            </td>
+                        </tr>
+                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                            <tr>
+                                <td style="border-bottom: none; border-left: 1pt solid; border-right: 1pt solid;" colspan="5">
+                                    <p class="s5 product-name" style="text-size: 15pt; text-align: left; margin-left: 2px; margin-top: 2px; margin-bottom: 2px;" t-field="line.product_id"></p>
+                                </td>
+                                <td style="border-bottom: none; border-left: 1pt solid; border-right: 1pt solid;">
+                                    <p style="text-align: right;"></p>
+                                    <p class="s7" style="text-align: right;" t-field="line.contenedor_x"></p>
+                                </td>
+                                <td style="border-bottom: none; border-left: 1pt solid; border-right: 1pt solid;">
+                                    <p class="s5" style="text-align: right;" t-field="line.quantity"></p>
+                                </td>
+                                <td style="border-bottom: none; border-left: 1pt solid; border-right: 1pt solid;">
+                                    <p class="s5" style="text-align: right;" t-field="line.price_unit"></p>
+                                </td>
+                                <td style="border-bottom: none; border-left: 1pt solid; border-right: 1pt solid;">
+                                    <p class="s5" style="text-align: right;">
+                                        <t t-esc="'{:,.2f}'.format(line.price_total).replace('Q', '')" />
+                                    </p>
+                                </td>
+                            </tr>
+                        </t>
+
+                            <tr>
+                                <td style="border: 1pt solid" colspan="9">
+                                    <p style="text-align: left; margin-left: 2px; margin-top: 2px; margin-bottom: 2px;">
+                                        <span style="float: right;"><t t-esc="'{:,.2f}'.format(o.amount_total).replace('Q', '')"></t></span>
+                                        VALOR TOTAL Q
+                                    </p>
+                                </td>
+                            </tr>
+
+
+
+
+                        <tr style="height:15pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr style="height:10pt">
+                            <td style="width:70pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;line-height: 8pt;text-align: left;">TOTAL EN QUETZALES</p>
+                            </td>
+                            <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;line-height: 8pt;text-align: left; margin-top: 2px; margin-bottom: 2px;"><t t-esc="o.text_amount"/></p>
+                            </td>
+                        </tr>
+
+                        <tr style="height:42pt">
+                            <td style="width:575pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9">
+                                <p class="s4" style="padding-top: 6pt;padding-left: 228pt;padding-right: 226pt;text-indent: 0pt;text-align: center;">Sujeto a pagos trimestrales ISR<br/>Agente de Retención del IVA</p>
+                            </td>
+                        </tr>
+                        <tr style="height:14pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-top: 1pt;padding-left: 228pt;padding-right: 209pt;text-indent: 0pt;text-align: center;">DATOS DEL CERTIFICADOR</p>
+                            </td>
+                        </tr>
+                    <tr style="height:15pt">
+                            <td style="width:147pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+                                <p class="s5" style="padding-top: 2pt; padding-left: 45pt; text-indent: 0pt; text-align: center;">NIT del contribuyente</p>
+                            </td>
+                            <td style="width:428pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="7">
+                                <p class="s5" style="padding-top: 2pt;padding-left: 45pt;text-indent: 0pt;text-align: left;">Nombre, razón o denominación social del contribuyente</p>
+                            </td>
+                        </tr>
+                        <tr style="height:18pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt; margin-left: 20px;" colspan="2">
+                                <p class="s5" style="margin-left: 50px; padding-top: 3pt;padding-left: 53pt;text-indent: 0pt;text-align: left;">5640773-4</p>
+                            </td>
+                            <td style="width:287pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="4">
+                                <p class="s5" style="padding-top: 3pt;padding-left: 34pt;text-indent: 0pt;text-align: left;">GUATEFACTURAS SOCIEDAD ANONIMA</p>
+                            </td>
+                            <td style="width:4pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="height:15pt; background: #c0c0c0;">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-top: 1pt;padding-left: 228pt;padding-right: 209pt;text-indent: 0pt;text-align: center;">DATOS ADICIONALES</p>
+                            </td>
+                        </tr>
+                        <tr style="height:13pt; background: #c0c0c0;">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="2" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Campo</p>
+                            </td>
+                            <td style="width:287pt;border-top-style:solid;border-top-width:1pt;border-bottom-width:1pt" colspan="4" bgcolor="#D6D6D6">
+                                <p class="s4" style="padding-left: 64pt;text-indent: 0pt;text-align: left;">Valor</p>
+                            </td>
+                            <td style="width:4pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="9" bgcolor="#D6D6D6">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="height:27pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="2">
+                                <p class="s8" style="padding-left: 4pt;text-indent: 0pt;line-height: 9pt;text-align: left;">Origen</p>
+                            </td>
+                            <td style="width:287pt;border-top-style:solid;border-top-width:1pt;border-bottom-width:1pt" colspan="4">
+                                <p class="s8" style="padding-left: 61pt;text-indent: 0pt;line-height: 9pt;text-align: left;"><t t-esc="o.invoice_origin"/></p>
+                            </td>
+                            <td style="width:4pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:none;border-bottom-width:0pt;border-right-style:solid;border-right-width:1pt" colspan="9">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="height:27pt">
+                            <td style="width:125pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt" colspan="2">
+                                <p class="s8" style="padding-left: 4pt;text-indent: 0pt;line-height: 9pt;text-align: left;">Referencia</p>
+                            </td>
+                            <td style="width:287pt;border-top-style:solid;border-top-width:1pt;border-bottom-width:1pt" colspan="4">
+                                <p class="s8" style="padding-left: 61pt;text-indent: 0pt;line-height: 9pt;text-align: left;"><t t-esc="o.name"/></p>
+                            </td>
+                            <td style="width:4pt;border-top-style:solid;border-top-width:1pt;border-bottom-style:none;border-bottom-width:0pt;border-right-style:solid;border-right-width:1pt" colspan="9">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="height:100pt">
+                            <td style="width:575pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt;overflow-wrap: break-word;" colspan="9">
+                                <p style="text-indent: 0pt;text-align: left;">
+                                    <p class="s5"><t t-esc="o.narration"/></p>
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+
+
+
+
+
+        </table>
+        </t>
+        </t>
+        </t>
+    </template>
+</odoo>

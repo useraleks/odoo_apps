@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="custom_report_product_replenishment" inherit_id="stock.report_product_product_replenishment">
+            <xpath expr="//a[@t-if=&quot;line['document_in']&quot;]" position="replace">
+                <a t-if="line['document_in']"
+                    t-attf-href="#" t-esc="line['document_in'].name" groups="hide_link_button_purchase.group_hide_purchase_line"
+                    class="font-weight-bold" view-type="form"
+                    t-att-res-model="line['document_in']._name"
+                    t-att-res-id="line['document_in'].id"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

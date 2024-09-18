@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="supervisor_no_access" model="res.groups">
+            <field name="name">Restricciones de Supervisores</field>
+        </record>
+
+        <record id="administrador_car_repair" model="res.groups">
+            <field name="name">Administrador Car Repair</field>
+        </record>
+
+    </data>
+</odoo>

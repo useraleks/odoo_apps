@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="product_template_view_viñeta_bono">
+      <field name="name">product_template_view_viñeta_bono</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='invoicing']" position="after">
+            <page name="viñeta_bono" string="Viñeta Bono" groups="wtl_vinetas_bono.group_show_vineta_window_product">
+                <group>
+                    <field name="apply_for_vineta"/>
+                </group>
+                <group>
+                        <group>
+                            <field name="vineta_cost" class="oe_inline" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}"/>
+                            <field name="vineta_price_min" class="oe_inline"/>
+                        </group>
+                        <group>
+                          <field name="blister_por_caja_id"/>
+                        </group>
+                    </group>
+            </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_product_view_viñeta_bono">
+      <field name="name">product_product_view_viñeta_bono</field>
+      <field name="model">product.product</field>
+      <field name="inherit_id" ref="product.product_normal_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='invoicing']" position="after">
+            <page name="viñeta_bono" string="Viñeta Bono" groups="wtl_vinetas_bono.group_show_vineta_window_product">
+                <group>
+                    <field name="apply_for_vineta"/>
+                </group>
+                <group>
+                        <group>
+                            <field name="vineta_cost" class="oe_inline" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}"/>
+                            <field name="vineta_price_min" class="oe_inline"/>
+                        </group>
+                        <group>
+                          <field name="blister_por_caja_id"/>
+                        </group>
+                    </group>
+            </page>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

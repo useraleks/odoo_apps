@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_re_print_vineta_bono_form" model="ir.ui.view">
+            <field name="name">view_re_print_vineta_bono_form</field>
+            <field name="model">re.print.vineta.bono.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Impresion de viñetas bono">
+                    <group name="group_tup">
+                        <separator string="Informacion"/>
+                            <group name="group_left">
+                                <field name="since" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <field name="until" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <button name="apply_booleans" string="Aplicar" type="object" class="btn-primary" data-hotkey="g"/>
+                            </group>
+                            <group name="group_right">
+                            </group>
+                        </group>
+                        <group>
+                        </group>
+                        <notebook>
+                            <page string="Viñetas" name="vinetas">
+                                <field name="vinetas_to_re_print">
+                                    <tree editable="bottom" create="false" delete="false">
+                                        <field name="selected" widget="boolean_toggle"/>
+                                        <field name="vineta_id" readonly="1" force_save="1"/>
+                                        <field name="barcode" readonly="1" force_save="1"/>
+                                        <field name="product_id" readonly="1" force_save="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    <footer>
+                        <button name="re_print_vineta_bono" string="RE-IMPRIMIR" type="object" class="btn-primary" data-hotkey="g"/>
+                        o
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_re_print_vinetas_bono" model="ir.actions.act_window">
+            <field name="name">Reimpresion de viñetas bono</field>
+            <field name="res_model">re.print.vineta.bono.wizard</field>
+            
+            <field name="view_mode">form</field>
+			<field name="view_id" ref="view_re_print_vineta_bono_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

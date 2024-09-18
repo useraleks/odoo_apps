@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_reception_vehicle_form" model="ir.ui.view">
+			<field name="name">reception.vehicle.form</field>
+			<field name="model">reception.vehicle</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle Reception">
+					<header>
+						<field name="state" widget="statusbar" options="{'clickable': '1'}" />
+						<button name="action_pasar_siguiente_estado" string="Disponible" type="object" class="oe_highlight" style="float:left;" attrs="{'invisible': ['|', ('is_state_sequence_1', '=', True), ('selected_option', '=', True)]}"/>
+						<button name="poner_en_taller" string="Trasladar a taller" type="object" class="oe_highlight" style="float:left;" attrs="{'invisible': ['|', ('is_state_sequence_2', '=', True), ('selected_option', '=', True)]}"/>
+					</header>
+					<sheet string="Reception Vehicle">
+                        <div class="oe_button_box" name="button_box">
+							<button type="object"
+								name="button_view_taller"
+								class="oe_stat_button"
+								icon="fa-solid fa-arrow-right"
+                                attrs="{'invisible': [('dig_count', '=', 0)]}" groups="base.group_user">
+								<field name="dig_count" widget="statinfo" string="Taller"/>
+							</button>
+						</div>
+                        <div class="oe_title oe_left">
+							<h1>
+								<field name="sequence"/>
+							</h1>
+						</div>
+                        <group>
+                            <group>
+                                <field name="name" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                <field name="motivo" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                <field name="fleet_id" domain="[('state_id.sequence', '=', 2), ('tag_ids.name', '=', motivo), ('company_branch.puertoquetzal', '=', puertoquetzalcar)]" 
+                                    options="{'always_reload': True,'no_quick_create':True,'no_create_edit':True,'no_open': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                <field name="santotomascar" invisible="1"/>
+                                <field name="puertoquetzalcar" invisible="1"/>
+                                <field name="reception_taller_id" invisible="1"/>
+                                <field name="selected_option" invisible="1"/>
+                                <field name="is_state_sequence_1" invisible="1"/>
+                                <field name="is_state_sequence_2" invisible="1"/>
+                                <field name="is_from_reception_module" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="priority" widget="priority" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                <field name="receipt_date"/>
+                                <field name="supervisor_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+                            </group>
+                        </group>
+						<notebook>
+                            <page string="General">
+                                <group string="Establecimiento">
+                                    <group>
+                                        <field name="client_id"  context="{'show_address': 1}" options="{'always_reload': True,'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+                                        <field name="driver" domain="[('is_driver', '=', True)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                        <field name="driver_phone" invisible="1"/>
+                                        <field name="driver_phone_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="odometer" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                        <field name="last_odometer"/>
+                                    </group>
+                                </group>
+                                <separator string="Car Info"/>
+                                <field name="vehicle_reception_line" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                            </page>
+							<page string="Lista de verificación">
+                                <notebook>
+                                    <page string="Inspeccion Documental">
+                                        <group>
+                                            <group string="Datos del Chofer">
+                                                <field name="repair_checklist_piloto_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                            </group>
+                                            <group string="Inspeccion Documental">
+                                                <field name="repair_checklist_documental_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Exterior" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_exterior_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                    </page>
+                                    <page string="Interior" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_interior_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                    </page>
+                                    <page string="Complementos" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_complementos_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                    </page>
+                                    <page string="Tanque" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <group>
+                                            <group string="Tanque">
+                                                <field name="repair_checklist_tanque_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Estado fisico del Chasis" attrs="{'invisible': [('motivo', '!=', 'Chasis')]}">
+                                        <group string="Chasis">
+                                            <field name="repair_checklist_chasis_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': ['|', ('is_state_sequence_1', '=', True), ('is_state_sequence_2', '=', True)]}"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </page>
+                        </notebook>
+                    </sheet>	
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+        <!--Reception vehicle tree View-->
+
+		<record id="view_reception_vehicle_tree" model="ir.ui.view">
+			<field name="name">reception.vehicle.tree</field>
+			<field name="model">reception.vehicle</field>
+            <field name="priority">4</field>
+			<field name="arch" type="xml">
+				<tree string="Vehicle Reception" default_order="sequence desc">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="fleet_id"/>
+                    <field name="supervisor_id"/>
+					<field name="driver"/>
+					<field name="driver_phone_id"/>
+                    <field name="receipt_date"/>
+				</tree>
+			</field>
+		</record>
+
+        <!--Reception vehicle filter View-->
+
+        <record id="view_reception_vehicle_filter" model="ir.ui.view">
+			<field name="name">reception.vehicle.list.select</field>
+			<field name="model">reception.vehicle</field>
+			<field name="arch" type="xml">
+				<search string="Search Reception Vehicle">
+                    <field name="sequence"/>
+                    <field name="supervisor_id"/>
+					<field name="driver"/>
+					<field name="name"/>
+					<field name="receipt_date"/>
+					<field name="fleet_id"/>
+					<separator/>
+			   </search>
+			</field>
+		</record>
+
+        <!--Action-->
+		<record model="ir.actions.act_window" id="action_reception_vehicle_tree_view">
+			<field name="name">Reception Vehicle</field>
+			<field name="res_model">reception.vehicle</field>
+			
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_reception_vehicle_filter"/>
+			<field name="view_id" ref="view_reception_vehicle_tree"/>
+		</record>
+
+	</data>
+</odoo>

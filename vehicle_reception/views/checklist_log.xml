@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_checklist_log_form" model="ir.ui.view">
+			<field name="name">check.list.log.form</field>
+			<field name="model">check.list.log</field>
+			<field name="arch" type="xml">
+				<form string="CheckList">
+					<sheet string="CheckList">
+                        <group>
+                            <group>
+                                <field name="supervisor_id"/>
+                                <field name="fleet_id"/>
+                                <field name="driver"/>
+                            </group>
+                            <group>
+                                <field name="receipt_date"/>
+                                <field name="ref_reception"/>
+                                <field name="ref_taller"/>
+                            </group>
+                        </group>
+						<notebook>
+							<page string="Lista de verificación de reparación de servicio">
+                                <notebook>
+                                    <page string="Inspeccion Documental">
+                                        <group>
+                                            <group string="Datos del Chofer">
+                                                <field name="repair_checklist_piloto_ids"  nolabel="1" options="{'no_create': True}"/>
+                                            </group>
+                                            <group string="Inspeccion Documental">
+                                                <field name="repair_checklist_documental_ids"  nolabel="1" options="{'no_create': True}"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Exterior">
+                                        <field name="repair_checklist_exterior_ids"  nolabel="1" options="{'no_create': True}"/>
+                                    </page>
+                                    <page string="Interior">
+                                        <field name="repair_checklist_interior_ids"  nolabel="1" options="{'no_create': True}"/>
+                                    </page>
+                                    <page string="Complementos">
+                                        <field name="repair_checklist_complementos_ids"  nolabel="1" options="{'no_create': True}"/>
+                                    </page>
+                                    <page string="Tanque">
+                                        <group>
+                                            <group string="Tanque">
+                                                <field name="repair_checklist_tanque_ids"  nolabel="1" options="{'no_create': True}"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Estado fisico del Chasis">
+                                        <group string="Chasis">
+                                            <field name="repair_checklist_chasis_ids"  nolabel="1" options="{'no_create': True}"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </page>
+                        </notebook>
+                    </sheet>	
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+        <!--CheckList tree View-->
+
+		<record id="view_checklist_log_tree" model="ir.ui.view">
+			<field name="name">check.list.log.tree</field>
+			<field name="model">check.list.log</field>
+			<field name="arch" type="xml">
+				<tree string="Vehicle Reception" default_order="receipt_date desc">
+                    <field name="fleet_id"/>
+                    <field name="supervisor_id"/>
+                    <field name="driver"/>
+                    <field name="receipt_date"/>
+				</tree>
+			</field>
+		</record>
+
+        <!--CheckList filter View-->
+
+        <record id="view_checklist_log_filter" model="ir.ui.view">
+			<field name="name">check.list.log.list.select</field>
+			<field name="model">check.list.log</field>
+			<field name="arch" type="xml">
+				<search string="Search CheckList">
+                    <field name="fleet_id"/>
+                    <field name="supervisor_id"/>
+					<separator/>
+			   </search>
+			</field>
+		</record>
+
+        <!--Action-->
+		<record model="ir.actions.act_window" id="action_checklist_log_tree_view">
+			<field name="name">CheckList</field>
+			<field name="res_model">check.list.log</field>
+			
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_checklist_log_filter"/>
+			<field name="view_id" ref="view_checklist_log_tree"/>
+		</record>
+
+	</data>
+</odoo>

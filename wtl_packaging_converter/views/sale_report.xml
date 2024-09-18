@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_report_view_tree_form_packaging" model="ir.ui.view">
+        <field name="name">sale_report_view_tree_form_packaging</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.sale_report_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='price_total']" position="before">
+                <field name="bx_available_idd"/>
+                <field name="units_available_idd"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="expense_form_view_inherited">
+      <field name="name">expense.form.view.inherited</field>
+      <field name="model">hr.expense</field>
+      <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+      <field name="arch" type="xml">
+        <field name="employee_id" position="after">
+          <field name="santotomas" invisible="1"/>
+          <field name="puertoquetzal" invisible="1"/>
+          <field name="no_contenedor"/>
+        </field>
+        <xpath expr="//field[@name='employee_id']" position="attributes">
+          <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+          <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

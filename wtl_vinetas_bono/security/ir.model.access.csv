@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.vineta.bono,access_vineta_bono,wtl_vinetas_bono.model_vineta_bono,base.group_user,1,1,1,1
+access.print.vinetas.bono.wizard,access_print_vinetas_bono_wizard,wtl_vinetas_bono.model_print_vinetas_bono_wizard,base.group_user,1,1,1,1
+access.print.vinetas.bono.wizard.line,access_print_vinetas_bono_wizard_line,wtl_vinetas_bono.model_print_vinetas_bono_wizard_line,base.group_user,1,1,1,1
+generated.registries.vinetas,access_generated_registries_vinetas,wtl_vinetas_bono.model_generated_registries_vinetas,base.group_user,1,1,1,1
+generated.vinetas,access_generated_vinetas,wtl_vinetas_bono.model_generated_vinetas,base.group_user,1,1,1,1
+vineta.payment,access_vineta,wtl_vinetas_bono.model_vineta_payment,base.group_user,1,1,1,1
+vineta.payment.line,access_vineta_payment_line,wtl_vinetas_bono.model_vineta_payment_line,base.group_user,1,1,1,1
+re.print.vineta.bono.wizard,access_re_print_vineta_bono_wizard,wtl_vinetas_bono.model_re_print_vineta_bono_wizard,base.group_user,1,1,1,1
+re.print.vineta.bono.wizard.line,access_re_print_vineta_bono_wizard_line,wtl_vinetas_bono.model_re_print_vineta_bono_wizard_line,base.group_user,1,1,1,1
+cancel.vineta.bono.wizard,access_cancel_vineta_bono_wizard,wtl_vinetas_bono.model_cancel_vineta_bono_wizard,base.group_user,1,1,1,1
+cancel.vineta.bono.wizard.line,access_cancel_vineta_bono_wizard_line,wtl_vinetas_bono.model_cancel_vineta_bono_wizard_line,base.group_user,1,1,1,1
+authorize.vinetas.bono.wizard,access_authorize_vinetas_bono_wizard,wtl_vinetas_bono.model_authorize_vinetas_bono_wizard,base.group_user,1,1,1,1

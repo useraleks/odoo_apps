@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="view_vineta_payment_form" model="ir.ui.view">
+            <field name="name">view_vineta_payment_form</field>
+            <field name="model">vineta.payment</field>
+            <field name="arch" type="xml">
+                <form string="Pago de viñetas" delete="false" duplicate="false">
+                    <header>
+                        <field name="state" widget="statusbar" />
+                        <button name="action_mark_as_paid" string="Marcar todo como 'Pagado'" type="object" class="btn-primary" data-hotkey="g" attrs="{'invisible':[('state', '=', 'done')]}"/>
+                        <button name="action_set_draft" string="Colocar en 'Borrador'" type="object" class="btn-primary" data-hotkey="g" attrs="{'invisible':[('state', '=', 'draft')]}" groups="wtl_vinetas_bono.group_set_draft_vinetas_payment"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_tittle">
+                            <h1>
+                                <field name="name" readonly="1"/>      
+                            </h1>
+                        </div>
+                        <group name="group_tup">
+                            <group name="group_left">
+                                <separator string="Informacion del pago"/>
+                                <field name="payment_date" readonly="1"/>
+                            </group>
+                            <group name="group_right">
+                                <separator string="Otra informacion"/>
+                                <field name="partner_id" attrs="{'readonly':[('state', '=', 'done')]}"/>
+                                <field name="salesperson" attrs="{'readonly':[('state', '=', 'done')]}" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Viñetas" name="vinetas">
+                                <field name="payment_line" attrs="{'readonly':[('state', '=', 'done')]}">
+                                    <tree editable="bottom">
+                                        <field name="vineta_id" options="{'no_create': True, 'no_edit': True, 'no_open': True}" attrs="{'readonly':[('state', '=', 'done')]}"/>
+                                        <field name="product_id" readonly="1" />
+                                        <field name="price" readonly="1"/>
+                                        <field name="lot_id" readonly="1"/>
+                                        <field name="invoice_ids" widget="many2many_tags" readonly="1"/>
+                                        <field name="partner_id"/>
+                                        <field name="state" readonly="1" widget="badge" decoration-success="state == 'paid'" decoration-danger="state=='defeated'"/>
+                                        <field name="salesperson" class="o_task_user_field" widget="many2one_avatar_user" readonly="1"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_total" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_vineta_payment_tree" model="ir.ui.view">
+            <field name="name">view_vineta_payment_tree</field>
+            <field name="model">vineta.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Gestion de Viñetas" default_order="name desc" delete="false" duplicate="false"> 
+                    <field name="name"/>
+                    <field name="payment_date"/>
+                    <field name="state" widget="badge" decoration-success="state == 'done'"/>
+                </tree>
+            </field>
+        </record>
+
+</odoo>

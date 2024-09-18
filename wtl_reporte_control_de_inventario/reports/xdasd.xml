@@ -1,0 +1,101 @@
+<td style="padding-left:10px;height: 10px;">
+                                    <p style="margin: 0;padding: 0;"><t t-esc="line['nacionalidad']"></t></p>
+                                </td>
+
+                                <!--Ref. Libro de costos-->
+
+                                <td style="height: 10px;">
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="line['quantity']"></t></p>
+                                        <t t-set="entradas_unidades" t-value="entradas_unidades + line['quantity']"/>
+                                    </span>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:.2f}'.format(line['quantity'] * costo_producto_actual)"/></p>
+                                        <t t-set="entradas_costo_total" t-value="entradas_costo_total + line['quantity'] * costo_producto_actual"/>
+                                    </span>
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="(abs(line['quantity']))"></t></p>
+                                        <t t-set="salidas_unidades" t-value="salidas_unidades + line['quantity']"/>
+                                    </span>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <t t-set="cantidad_positiva" t-value="line['quantity'] * -1"/>
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:.2f}'.format(cantidad_positiva * costo_producto_actual)"/></p>
+                                        <t t-set="salidas_costo_total" t-value="salidas_costo_total + line['quantity'] * costo_producto_actual"/>
+                                    </span>
+                                </td>
+
+                                <!--Saldo en Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <span style="margin: 0;padding: 0;">
+                                        <t t-set="saldo_actual" t-value="line['quantity']"/>
+                                        <p style="margin: 0;padding: 0;">
+                                            <t t-if="saldo_actual >= 1">
+                                                <t t-esc="saldo_actual + saldo_acumulado"/>
+                                                <t t-set="saldo_acumulado" t-value="saldo_actual + saldo_acumulado"/>
+                                                <t t-set="saldo_unidades" t-value="saldo_unidades + saldo_acumulado"/>
+                                            </t>
+                                            <t t-if="saldo_actual &lt; 0">
+                                                <t t-set="saldo_actual_positivo" t-value="saldo_actual * -1"/>
+                                                <t t-esc="saldo_acumulado - saldo_actual_positivo "/>
+                                                <t t-set="saldo_acumulado" t-value="saldo_acumulado - saldo_actual_positivo"/>
+                                                <t t-set="saldo_unidades" t-value="saldo_unidades + saldo_acumulado"/>
+                                            </t>
+                                        </p>
+                                    </span>
+                                </td>
+
+                                <!--Precio Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span>
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Saldo en Precio de Costo-->
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span style="margin: 0;padding: 0;">
+                                        <t t-set="primer_costo_total" t-value="line['quantity'] * producto_costo"/> <!--14.00-->
+                                        <t t-set="saldo_en_precio_de_costo" t-value="costo_acumulado + primer_costo_total"/>
+                                        <t t-esc="'{:.2f}'.format(saldo_en_precio_de_costo)"/>
+                                        <t t-set="costo_acumulado" t-value="saldo_en_precio_de_costo"/>
+                                        <t t-set="saldo_en_precio_de_costo_total" t-value="saldo_en_precio_de_costo_total + costo_acumulado"/>
+                                    </span>
+                                </td>-->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report 
+            id="action_control_de_inventario"
+            string="REGISTRO DE CONTROL DE INVENTARIO"
+            model="wiz.general.reporting"
+            report_type="qweb-pdf"
+            file="wtl_reporte_control_de_inventario.reporte_control_de_inventario"
+            name="wtl_reporte_control_de_inventario.reporte_control_de_inventario"
+            paperformat="wtl_reporte_control_de_inventario.formato_control_de_inventario"
+        />
+</odoo>

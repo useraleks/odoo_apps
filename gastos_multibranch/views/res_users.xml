@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="users_form_view_inherited">
+      <field name="name">users.form.view.inherited</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook[@colspan='4']" position="inside">
+                    <page string="Branch" name="branch_info">
+                        <group>
+                            <field name="santotomas"/>
+                            <field name="puertoquetzal"/>
+                        </group>
+                    </page>
+                </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

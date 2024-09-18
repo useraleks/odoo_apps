@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="sale_order_packaging_converter">
+      <field name="name">sale_order_packaging_converter</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+            <field name="boxes_id"/>
+            <field name="tabletas_id"/>
+            <field name="blister_id"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

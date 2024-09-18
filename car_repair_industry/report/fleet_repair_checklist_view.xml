@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="fleet_repair_checklist_template_view">
+			<t t-call="web.external_layout">
+				<t t-set="o" t-value="o.with_context(lang=lang)" />
+				<div class="page">
+					<div>
+						<div class="row">
+							<div class="col-xs-5">
+								<table>
+									<tr>
+										<td style="width: 100%; height: 22px; padding-left:10px;">
+											<b><span>Establecimiento</span></b>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.name"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.street"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.street2"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<div style="width: 100%">
+												<span style="width: 40%" t-field="o.client_id.city"/>,
+												<span style="width: 20%" t-field="o.client_id.state_id.code"/>,
+												<span style="width: 40%" t-field="o.client_id.zip"/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 100%;padding-left:10px;">
+											<span t-field="o.client_id.country_id"/>
+										</td>
+									</tr>
+
+									<tr t-if="o.client_phone">
+										<td style="width: 100%;padding-left:10px;">
+											<span style="font-weight: bold;">Phone:</span>
+											<span t-field="o.client_phone"/>
+										</td>
+									</tr>
+									
+									<tr t-if="o.client_mobile">
+										<td style="width: 100%;padding-left:10px;">
+											<span style="font-weight: bold;">Mobile:</span>
+											<span t-field="o.client_mobile"/>
+										</td>
+									</tr>
+									<tr t-if="o.client_email">
+										<td style="width: 100%;padding-left:10px;">
+											<span style="font-weight: bold;">Email:</span>
+											<span t-field="o.client_email"/>
+										</td>
+									</tr>
+									
+								</table>
+							</div>
+							<div class="col-xs-3">
+								<table style="width:100%">
+									<tr>
+										<td style="padding-left:10px; height: 22px; padding-top: 5px;">
+											<strong>Piloto</strong>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-left:10px; text-align: left;">
+											<span t-field="o.contact_name"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-left:10px;">
+											<strong>Tel: </strong>
+											<span t-field="o.phone"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-xs-3">
+								<table style="width:100%">
+									<tr style="height:22px;">
+										<td style="width:16%;padding:3px;padding-left:10px;">
+											<b><span >Fecha de Recepcion</span></b>
+										</td>
+									</tr>
+									<tr style="height: 22px">
+										<td style="padding:3px;padding-left:10px;">
+											<span t-field="o.receipt_date"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<h3 style="margin-top: 30px; font-weight: bold;">
+							<span t-if="o.sequence">Recepción </span>
+							<span t-field="o.sequence"/>
+						</h3>
+						
+							<div class="row" style="margin-top: 100px;">
+								<div class="col-6">
+									<h3>
+										<span style="font-weight: bold;">DATOS DEL CHOFER:</span>
+									</h3>
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+										<t t-foreach="env['fleet.repair.checklist.piloto'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_piloto_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+								
+								<div class="col-6">
+									<div class="row" style="margin-top: 100px;">
+										<h3>
+											<span style="font-weight: bold;">INSPECCION DOCUMENTAL:</span>
+										</h3>
+									</div>
+									<div class="row">
+										<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+											<t t-foreach="env['fleet.repair.checklist.documental'].search([])" t-as="option">
+												<tr>
+													<th style="height: 25px;border-right: 1px solid white;">
+														<div class="row">
+															<div class="col-1" style="font-size:25px; margin-left: 10px;">
+																<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_documental_ids.ids"/>
+															</div>
+															<div class="col-10">
+																<span style="font-size:20px;" t-esc="option.name"/>
+															</div>
+														</div>
+													</th>
+												</tr>
+											</t>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<t t-if="o.motivo == 'Chasis'">
+								<div class="row" style="margin-top: 100px;">
+									<h3>
+										<span style="font-weight: bold;">CHASIS:</span>
+									</h3>
+								</div>
+								<div class="row">
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+										<t t-foreach="env['fleet.repair.checklist.chasis'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox"
+																t-att-checked="option.id in o.repair_checklist_chasis_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+							</t>
+						<t t-if="o.motivo == 'Cabezal'">
+							<div class="row" style="margin-top: 100px;">
+								<div class="col-6">
+									<h3>
+										<span style="font-weight: bold;">EXTERIOR:</span>
+									</h3>
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+										<t t-foreach="env['fleet.repair.checklist.exterior'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_exterior_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+								<div class="col-6">
+									<h3>
+										<span style="font-weight: bold;">INTERIOR:</span>
+									</h3>
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+										<t t-foreach="env['fleet.repair.checklist.interior'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_interior_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+							</div>
+						</t>
+
+						<t t-if="o.motivo == 'Cabezal'">
+							<div class="row" style="margin-top: 100px;">
+								<div class="col-6">
+									<h3>
+										<span style="font-weight: bold;">COMPLEMENTOS:</span>
+									</h3>
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px;">
+										<t t-foreach="env['fleet.repair.checklist.complementos'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_complementos_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+								<div class="col-6">
+									<h3>
+										<span style="font-weight: bold;">TANQUE:</span>
+									</h3>
+									<table style="width: 100%; margin-top: 20px; margin-left: 10px; border: none;">
+										<t t-foreach="env['fleet.repair.checklist.tanque'].search([])" t-as="option">
+											<tr>
+												<th style="height: 25px;border-right: 1px solid white;">
+													<div class="row">
+														<div class="col-1" style="font-size:25px; margin-left: 10px;">
+															<input type="checkbox" name="checkbox" t-att-checked="option.id in o.repair_checklist_tanque_ids.ids"/>
+														</div>
+														<div class="col-10">
+															<span style="font-size:20px;" t-esc="option.name"/>
+														</div>
+													</div>
+												</th>
+											</tr>
+										</t>
+									</table>
+								</div>
+							</div>
+						</t>
+
+						<div class="col-xs-12" style="width:100%; margin-top: 270px;">
+							<table style="width: 100%;">	
+								<tr>					
+									<td>
+										<span style="border-top: 1px solid; font-size: 25px;"><span t-field="o.employee_id"/></span>
+									</td>
+									<td>
+										<span style="border-top: 1px solid;float:right; font-size: 25px;"><span t-field="o.contact_name"/></span>
+									</td>							
+								</tr>
+							</table>
+						</div>			
+					</div>
+				</div>
+			</t>
+		</template>
+
+		 <template id="machi_repa_checklist_temp_id">
+			<t  t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="car_repair_industry.fleet_repair_checklist_template_view" t-lang="o.client_id.lang"/>
+				</t>
+			</t>
+		</template>
+		
+	</data>
+</odoo>

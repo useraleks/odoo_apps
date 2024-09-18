@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="sale_order_viñeta_bono">
+      <field name="name">sale_order_viñeta_bono</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-warning mb-0" role="alert"
+                     attrs="{'invisible': [('show_vineta_bono_warning', '=', False)]}" readonly="1">
+                    IMPORTANTE<br/>
+                    <field name="message_id" readonly="1"/>
+                </div>
+            </xpath>
+        <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="apply_for_vineta" invisible="1"/>
+            <field name="show_vineta_bono_warning" invisible="1"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[@name='sale_header']/group[@name='order_details']/div[3]" position="after">
+          <field name="vineta_pricelist"/>
+        </xpath>
+        <xpath expr="//button[@name='action_view_delivery']" position="before">
+          <button type="object" name="button_view_vinetas_bono" class="oe_stat_button" icon="fa-barcode" attrs="{'invisible': [('count_vinetas', '=', 0)]}" groups="wtl_vinetas_bono.group_vineta_bono_access">
+						<field name="count_vinetas" widget="statinfo" string="Viñetas Bono"/>
+					</button>
+        </xpath>
+        <xpath expr="//field[@name='pricelist_id']" position="attributes">
+					<attribute name="domain">['|', ('company_id', '=', False), ('company_id', '=', company_id), ('is_for_vineta', '=', False)]</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_valuation_layer_tree_packaging_converter" model="ir.ui.view">
+        <field name="name">stock_valuation_layer_tree_packaging_converter</field>
+        <field name="model">stock.valuation.layer</field>
+        <field name="inherit_id" ref="stock_account.stock_valuation_layer_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='quantity']" position="after">
+                <field name="bx_available"/>
+                <field name="units_available"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_pricelist_item_form_view_packaging" model="ir.ui.view">
+        <field name="name">product_pricelist_item_form_view_packaging</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pricelist_rule_related']" position="after">
+                <group attrs="{'invisible':[('product_tmpl_id', '=', False)]}">
+                    <label for="min_qty_x_package" string="Aplicar Cantidad mín. por empaquetado?" />
+                    <div class="o_row">
+                        <field name="min_qty_x_package"/>
+                    </div>
+                    <group attrs="{'invisible':[('min_qty_x_package', '=', False)]}">
+                        <field name="caja_id"/>
+                        <field name="blister_id"/>
+                        <field name="tableta_id"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

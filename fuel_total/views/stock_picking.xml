@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_stock_picking_inh" model="ir.ui.view">
+            <field name="name">view_stock_picking_inh</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="plate" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+                    <field name="driver_name" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+                    <field name="driver_signature" invisible="1"/>
+                    <field name="driver_signature_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+                    <field name="fuel_total" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='location_id']" position="after">
+                    <field name="medidas_tanque_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+					<field name="medidas_inicial_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+					<field name="medidas_final_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}"/>
+					<field name="direccion_entrega_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}" />
+                    <field name="despacho_combustible" invisible="1"/>
+                    <field name="peso_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}" />
+                    <field name="medida_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}" />
+                    <field name="cliente_id" attrs="{'invisible': [('despacho_combustible', '!=', True)]}" />
+                    <field name="is_refeer" attrs="{'invisible': [('despacho_combustible', '!=', True)]}" />
+                    <field name="medida_inicial_refer" attrs="{'invisible': ['|', ('is_refeer', '!=', True),('despacho_combustible', '!=', True)]}"/>
+                    <field name="medida_final_refer" attrs="{'invisible': ['|', ('is_refeer', '!=', True),('despacho_combustible', '!=', True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='move_line_ids_without_package']" position="inside">
+                    <field name="location_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_stock_picking_tree_inh" model="ir.ui.view">
+            <field name="name">view_stock_picking_tree_inh</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field optional="show" name="plate" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                    <field optional="show" name="peso_id"/>
+                    <field optional="show" name="medida_id"/>
+                    <field optional="show" name="cliente_id"/>
+                    <field optional="show" name="direccion_entrega_id"/>
+                    <field optional="show" name="is_refeer"/>
+                    <field optional="show" name="medida_inicial_refer"/>
+                    <field optional="show" name="medida_final_refer"/>
+                    <field optional="show" name="fuel_total" sum="Total de galones" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_stock_picking_group_inh" model="ir.ui.view">
+            <field name="name">view_stock_picking_group_inh</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group" position="inside">
+					<filter string="Placa" name="placa" context="{'group_by':'plate'}"/>
+					<filter string="Fecha" name="date" context="{'group_by':'create_date'}"/>
+				</xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="plate"/>
+                    <field name="create_date"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_stock_picking_type_inh" model="ir.ui.view">
+            <field name="name">view_stock_picking_type_inh</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_picking_type_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence_code']" position="after">
+					<field name="despacho_combustible"/>
+				</xpath>
+            </field>
+        </record>
+
+</odoo>

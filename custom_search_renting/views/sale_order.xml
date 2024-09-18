@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="rental_order_seach_inh" model="ir.ui.view">
+            <field name="name">rental_order_seach_inh</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_renting.rental_order_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search[1]/field[@name='name']" position="before">
+                    <field name="piloto_id_dos" context="{'group_by': 'piloto_id_dos'}"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

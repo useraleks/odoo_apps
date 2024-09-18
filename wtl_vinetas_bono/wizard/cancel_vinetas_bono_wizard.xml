@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_cancel_vineta_bono_form" model="ir.ui.view">
+            <field name="name">view_cancel_vineta_bono_form</field>
+            <field name="model">cancel.vineta.bono.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Anulacion de viñetas bono">
+                    <group name="group_tup">
+                        <separator string="Informacion"/>
+                            <group name="group_left">
+                                <field name="since" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <field name="until" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>/>
+                                <field name="delivery_order"/>
+                                <button name="apply_booleans" string="Aplicar" type="object" class="btn-primary" data-hotkey="g"/>
+                            </group>
+                            <group name="group_right">
+                            </group>
+                        </group>
+                        <group>
+                        </group>
+                        <notebook>
+                            <page string="Viñetas" name="vinetas">
+                                <field name="vinetas_to_cancel" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="selected" widget="boolean_toggle" readonly="1"/>
+                                        <field name="vineta_id" readonly="1" force_save="1"/>
+                                        <field name="barcode" readonly="1" force_save="1"/>
+                                        <field name="product_id" readonly="1" force_save="1"/>
+                                        <field name="lot_id" readonly="1" force_save="1"/>
+                                        <field name="date_end" force_save="1"/>
+                                        <field name="state" force_save="1" widget="badge" decoration-success="state == 'paid'" decoration-danger="state=='defeated'"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    <footer>
+                        <button name="cancel_vineta_bono" string="Anular Viñetas" type="object" class="btn-primary" data-hotkey="g"/>
+                        o
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_cancel_vinetas_bono" model="ir.actions.act_window">
+            <field name="name">Anulacion de viñetas bono</field>
+            <field name="res_model">cancel.vineta.bono.wizard</field>
+            
+            <field name="view_mode">form</field>
+			<field name="view_id" ref="view_cancel_vineta_bono_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

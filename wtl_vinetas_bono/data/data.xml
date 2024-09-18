@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="seq_vineta_bono" model="ir.sequence">
+            <field name="name">Vineta Sequence</field>
+            <field name="code">vineta.bono</field>
+            <field name="prefix">VTN_PAGO_</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_barcode" model="ir.sequence">
+            <field name="name">Barcode Sequence</field>
+            <field name="code">vineta.bono.barcode</field>
+            <field name="prefix"></field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_vineta_payment" model="ir.sequence">
+            <field name="name">payment Sequence</field>
+            <field name="code">vineta.payment</field>
+            <field name="prefix">PMNT_</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+    
+
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+    <menuitem
+                id="menu_fleet_checklist_conf"
+                name="Configuracion"
+                parent="car_repair_industry.menu_main_car_repair"
+                sequence="77"/>
+
+        <menuitem
+                id="menu_checklist_"
+                name="Listas de verificacion"
+                parent="car_repair_multibranch.menu_fleet_checklist_conf"
+                sequence="77"/>
+
+        <menuitem
+                id="menu_fleet_checklist_chasis"
+                action="checklist_action_view_chasis_tree"
+                name="Chasis"
+                parent="car_repair_multibranch.menu_checklist_"
+                sequence="77"/>
+
+        <menuitem
+                id="menu_fleet_checklist_complementos"
+                action="checklist_action_view_complementos_tree"
+                name="Complementos"
+                parent="car_repair_multibranch.menu_checklist_"/>
+
+        <menuitem
+                id="menu_fleet_checklist_documental"
+                action="checklist_action_view_documental_tree"
+                name="Lista Inspeccion documental"
+                parent="car_repair_multibranch.menu_checklist_"/>
+
+        <menuitem
+                id="menu_fleet_checklist_exterior"
+                action="checklist_action_view_exterior_tree"
+                name="Exterior"
+                parent="car_repair_multibranch.menu_checklist_"/>
+
+        <menuitem
+                id="menu_fleet_checklist_interior"
+                action="checklist_action_view_interior_tree"
+                name="Interior"
+                parent="car_repair_multibranch.menu_checklist_"/>
+
+        <menuitem
+                id="menu_fleet_checklist_piloto"
+                action="checklist_action_view_piloto_tree"
+                name="Datos del piloto"
+                parent="car_repair_multibranch.menu_checklist_"/>
+
+        <menuitem
+                id="menu_fleet_checklist_tanque"
+                action="checklist_action_view_tanque_tree"
+                name="Tanque"
+                parent="car_repair_multibranch.menu_checklist_"/>
+    </data>
+</odoo>

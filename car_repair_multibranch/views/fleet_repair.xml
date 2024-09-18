@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+            <record id="view_fleet_repair_branch" model="ir.ui.view">
+            <field name="name">view_fleet_repair_branch</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_repair_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='employee_id']" position="after">
+                        <field name="santotomascar" invisible="1"/>
+                        <field name="puertoquetzalcar" invisible="1"/>
+                    </xpath>
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="motivo" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="fleet_id" domain="[('tag_ids.name', '=', motivo), ('company_branch.puertoquetzal', '=', puertoquetzalcar)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="service_id" invisible="1"/>
+                    </xpath>
+                    <xpath expr="//field[@name='user_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='receipt_date']" position="attributes">
+                        <attribute name="readonly">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@name='checklist']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//button[@name='action_print_receipt']" position="after">
+                        <button name="action_print_checklist_id" string="LISTA DE VERIFICACION" states="draft" type="object" style="float:left;"/>
+                    </xpath>
+                    <xpath expr="//button[@name='action_print_label']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='contact_name']" position="attributes">
+                        <attribute name="domain">[('is_driver', '=', True)]</attribute>
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                        <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True}</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='contact_name']" position="after">
+                        <xpath expr="//field[@name='phone']" position="move"/>
+                    </xpath>
+                    <xpath expr="//field[@name='client_phone']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='client_mobile']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='client_email']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='client_phone']" position="after">
+                        <field name="type_of_service" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/> 
+                        <field name="vehiculo_id" invisible="1"/>
+                        <label for="odometer" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <div class="o_row">
+                            <field name="odometer" class="oe_inline" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </div>
+                        <field name="last_odometer"/>
+                        <field name="is_from_reception_module" invisible="1"/>
+                    </xpath>
+
+                    <xpath expr="//notebook" position="inside">
+                            <page string="Lista de verificación">
+                                <notebook>
+                                    <page string="Inspeccion Documental">
+                                        <group>
+                                            <group string="Datos del Chofer">
+                                                <field name="repair_checklist_piloto_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                            </group>
+                                            <group string="Inspeccion Documental">
+                                                <field name="repair_checklist_documental_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Exterior" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_exterior_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </page>
+                                    <page string="Interior" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_interior_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </page>
+                                    <page string="Complementos" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <field name="repair_checklist_complementos_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </page>
+                                    <page string="Tanque" attrs="{'invisible': [('motivo', '!=', 'Cabezal')]}">
+                                        <group>
+                                            <group string="Tanque">
+                                                <field name="repair_checklist_tanque_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                            </group>
+                                            <group string="Gasolina">
+                                                <field name="gas"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Estado fisico del Chasis" attrs="{'invisible': [('motivo', '!=', 'Chasis')]}">
+                                        <group string="Chasis">
+                                            <field name="repair_checklist_chasis_ids"  nolabel="1" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+
+
+        <record id="view_fleet_repair_line_branch" model="ir.ui.view">
+            <field name="name">view_fleet_repair_line_branch</field>
+            <field name="model">fleet.repair.line</field>
+            <field name="inherit_id" ref="car_repair_industry.view_repair_fleet_line_form"/>
+            <field name="arch" type="xml">
+                <field name="fleet_id" position="after">
+                    <field name="santotomas_line" invisible="1"/>
+                    <field name="puertoquetzal_line" invisible="1"/>
+                </field>
+                <field name="fleet_id" position="attributes">
+                    <attribute name="domain">[('tag_ids.name', '=', parent.motivo), ('company_branch.puertoquetzal', '=', puertoquetzal_line)]</attribute>
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="license_plate" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="vin_sn" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="model_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="fuel_type" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </field>
+                <field name="guarantee" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="guarantee_type" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="service_product_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="service_product_price" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="service_type" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="service_type" position="after">
+                    <field name="service_type_ok" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+                </field>
+                <field name="spare_part_ids" attrs="{'readonly': [('workorder_id', '!=', False)]}">
+                    <tree string="Spare Parts" editable="bottom">
+                        <field name="product_id"/>
+                        <field name="default_code"/>
+                        <field name="quantity"/>
+                        <field name="price_unit" invisible="1"/>
+                    </tree>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_fleet_tree_line_inherit" model="ir.ui.view">
+            <field name="name">view_fleet_tree_line_inherit</field>
+            <field name="model">fleet.repair.line</field>
+            <field name="inherit_id" ref="car_repair_industry.view_repair_fleet_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='guarantee']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.menu" id="car_repair_industry.menu_fleet_checklist">
+            <field name="groups_id" eval="[(4, ref('campos_car_repair.administrador_car_repair'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="car_repair_industry.menu_main_car_repair">
+            <field name="web_icon">car_repair_multibranch,static/description/icon.PNG</field>
+        </record>
+
+        <record id="car_repair_industry.fleet_diagnostic_request_report_id" model="ir.actions.report">
+            <field name="binding_model_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

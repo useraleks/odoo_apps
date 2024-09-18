@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_expense_tree_inherit" model="ir.ui.view">
+            <field name="name">view_hr_expense_tree_inherit</field>
+            <field name="model">fleet.repair.line</field>
+            <field name="inherit_id" ref="car_repair_industry.view_repair_fleet_line_form"/>
+            <field name="groups_id" eval="[(4, ref('campos_car_repair.supervisor_no_access'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='service_type']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='model_id']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='license_plate']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='vin_sn']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='fleet_id']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_tree_line_inherit" model="ir.ui.view">
+            <field name="name">view_hr_expense_tree_line_inherit</field>
+            <field name="model">fleet.repair.line</field>
+            <field name="inherit_id" ref="car_repair_industry.view_repair_fleet_line_tree"/>
+            <field name="groups_id" eval="[(4, ref('campos_car_repair.supervisor_no_access'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='service_type']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_fleet_repair_inherit_fields" model="ir.ui.view">
+            <field name="name">view_fleet_repair_inherit_fields</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_repair_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='receipt_date']" position="after">
+                    <field name="employee_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_fleet_repair_inherit" model="ir.ui.view">
+            <field name="name">view_fleet_repair_inherit</field>
+            <field name="model">fleet.repair</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_repair_form"/>
+            <field name="groups_id" eval="[(4, ref('campos_car_repair.supervisor_no_access'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='client_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='contact_name']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

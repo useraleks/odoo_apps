@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_fleet_diagnose_inherit_ok" model="ir.ui.view">
+            <field name="name">view.fleet.diagnose.inherit.ok</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_diagnose_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="mechanic_id" readonly="True"/>
+                    <field name="service_id" invisible="1"/>
+                    <field name="santotomascar" invisible="1"/>
+                    <field name="puertoquetzalcar" invisible="1"/>
+                    <field name="vehiculo_id" invisible="1"/>
+                </xpath>
+		        <xpath expr="//field[@name='fleet_repair_line']" position="inside">
+                    <field name="fleet_id" readonly="1"/>
+                    <field name="fuel_type" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='contact_name']" position="after">
+                    <xpath expr="//field[@name='phone']" position="move"/>
+                </xpath>
+                <xpath expr="//field[@name='client_phone']" position="before">
+                    <field name="service_type_ok" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_fleet_diagnose_wi_inherit_ok" model="ir.ui.view">
+            <field name="name">view_fleet_diagnose_wi_inherit_ok</field>
+            <field name="model">fleet.diagnose.assignto.technician</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_diagnose_assign_to_tech_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="mechanic_id" style="width: 50%" domain="[('company_branch.puertoquetzal', '=', puertoquetzal_line), ('is_mechanic', '=', True)]"/>
+                    <field name="santotomas_line" invisible="1"/>
+                    <field name="puertoquetzal_line" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_diagnose_fleet_inherited" model="ir.ui.view">
+            <field name="name">view_diagnose_fleet_inherited</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="inherit_id" ref="car_repair_industry.view_fleet_diagnose_form"/>
+            <field name="groups_id" eval="[(4, ref('campos_car_repair.supervisor_no_access'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mechanic_id']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='client_id']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='contact_name']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='client_email']" position="attributes">
+                    <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True,}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

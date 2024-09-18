@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="rental_order_primary_form_view_inherit_field" model="ir.ui.view">
+        <field name="name">sale.order.form.inherited.field</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_renting.rental_order_primary_form_view" />
+        <field name="arch" type="xml">
+            <field name="piloto_id" position="after">
+                <field name="piloto_id_dos" invisibl="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

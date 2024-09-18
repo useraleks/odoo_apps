@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_fleet_Log_inherit_ok" model="ir.ui.view">
+            <field name="name">view_fleet_Log_inherit_ok</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form"/>
+            <field name="arch" type="xml">
+		        <xpath expr="//field[@name='vehicle_id']" position="after">
+                    <field name="piloto_id"/>
+                    <field name="id_reparacion"/>
+                </xpath>
+                <xpath expr="//field[@name='purchaser_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='vendor_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='vendor_id']" position="attributes">
+                    <field name="supervisor_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_fleet_Log_tree_inherit_ok" model="ir.ui.view">
+            <field name="name">view_fleet_Log_tree_inherit_ok</field>
+            <field name="model">fleet.vehicle.log.services</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_tree"/>
+            <field name="arch" type="xml">
+		        <xpath expr="//field[@name='purchaser_id']" position="after">
+                    <field optional="show" name="piloto_id"/>
+                </xpath>
+                <xpath expr="//field[@name='purchaser_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+</odoo>

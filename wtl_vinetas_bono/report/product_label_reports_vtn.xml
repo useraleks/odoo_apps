@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="paperformat_label_a4_blank_vineta" model="report.paperformat">
+        <field name="name">Label A4</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <report 
+            id="action_report_product_label_A4_57x35_vineta"
+            string="viñetas"
+            model="print.vinetas.bono.wizard"
+            report_type="qweb-pdf"
+            file="wtl_vinetas_bono.report_product_label_57x35_template_vtn"
+            name="wtl_vinetas_bono.report_product_label_57x35_template_vtn"
+            paperformat="wtl_vinetas_bono.paperformat_label_a4_blank_vineta"
+        />
+
+    <report 
+            id="action_report_product_label_A4_57x35_re_vineta"
+            string="viñetas"
+            model="re.print.vineta.bono.wizard"
+            report_type="qweb-pdf"
+            file="wtl_vinetas_bono.report_product_label_57x35_template_re_vtn"
+            name="wtl_vinetas_bono.report_product_label_57x35_template_re_vtn"
+            paperformat="wtl_vinetas_bono.paperformat_label_a4_blank_vineta"
+        />
+
+</odoo>

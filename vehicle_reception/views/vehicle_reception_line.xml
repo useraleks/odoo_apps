@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+    <!-- Reception Lines-->
+
+		<record id="view_vehicle_reception_form" model="ir.ui.view">
+			<field name="name">vehicle.reception.line.form</field>
+			<field name="model">vehicle.reception.line</field>
+			<field name="arch" type="xml">
+				<form string="Reception Lines">
+					<sheet>
+						<group class="col-xs-12">
+							<group class="col-xs-6">
+								<field name="fleet_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+								<field name="license_plate"/>
+								<field name="vin_sn"/>
+								<field name="vehicle_reception_id" invisible="1"/>
+							</group>
+							<group class="col-xs-6">
+								<field name="model_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_vehicle_reception_line_tree" model="ir.ui.view">
+			<field name="name">vehicle.reception.line.tree</field>
+			<field name="model">vehicle.reception.line</field>
+			<field name="arch" type="xml">
+				<tree string="Reception Lines">
+					<field name="fleet_id"/>
+					<field name="license_plate"/>
+					<field name="vin_sn"/>
+					<field name="model_id"/>
+				</tree>
+			</field>
+		</record>
+
+    </data>
+</odoo>

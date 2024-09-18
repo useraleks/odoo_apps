@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_move_form_viñeta_bono">
+      <field name="name">view_move_form_viñeta_bono</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//sheet" position="before">
+                <div class="alert alert-warning mb-0" role="alert"
+                     attrs="{'invisible': [('show_vineta_bono_warning', '=', False)]}" readonly="1">
+                    IMPORTANTE<br/>
+                    <field name="message_id" readonly="1"/>
+                </div>
+            </xpath>
+        <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="show_vineta_bono_warning" invisible="1"/>
+        </xpath>
+        <xpath expr="//button[@name='action_invoice_sent']" position="after">
+            <button name="%(action_authorize_vinetas_bono)d" string="AUTORIZAR VIÑETAS" type="action" class="oe_highlight" style="float:left;" attrs="{'invisible': ['|',('show_vineta_bono_warning', '!=', True),('state', '!=', 'posted')]}" groups="wtl_vinetas_bono.group_authorize_vineta"/>
+        </xpath>
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="sale_id"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

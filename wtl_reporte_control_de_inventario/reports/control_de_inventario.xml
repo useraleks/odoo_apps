@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_ok">
+            <div class="header">
+                <div class="row" style="report_header_style">
+                    <t t-call="web.html_container">
+                        <link rel="stylesheet" href="/wtl_reporte_control_de_inventario/static/src/css/style.css"/>
+                            <p class="s2" style="text-align:center;font-size: 18px;margin: 0;padding: 0;">REGISTRO DE CONTROL DE INVENTARIO</p>
+                            <span class="s2" style="position:absolute;top:22.587973px;font-size:20px;left:703.000000px;">J.O.M.I., S.A. de C.V.</span>
+                            <span class="s2" style="position:absolute;top:22.587973px;font-size:20px;left:1320.000000px;">FOLIO:</span>
+                            <span class="s2" style="position:absolute;top:22.587973px;font-size:20px;left:1400.000000px;">
+                                <div class="page">
+                                </div>
+                            </span>
+                            <br/>
+                            <div style="padding-top:10px">
+                                <table style="width: 100%; padding-top:5px;border-collapse: collapse;border: none;">
+                                    <tr>
+                                        <td style="border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                            <span class="s2" style="display: inline-block; margin: 0;padding: 0;">NIT:</span>
+                                            <span class="s4" style="display: inline-block;margin: 0;padding: 0;">0614-16-0192-104-3</span>
+                                        </td>
+                                        <td style="border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                            <span class="s2" style="display: inline-block;margin: 0;padding: 0;">NCR:</span>
+                                            <p class="s3" style="display: inline-block;margin: 0;padding: 0;">59556-0</p>
+                                        </td>
+                                        <td style="border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                            <p class="s2" style="display: inline-block;margin: 0;padding: 0;">Sucursal:</p>
+                                            <p class="s3" style="display: inline-block;margin: 0;padding: 0;">B. PRINCIPAL</p>
+                                        </td>
+                                        <td style="border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                            <p class="s2" style="display: inline-block;margin: 0;padding: 0;">PERIODO DESDE:</p>
+                                            <p class="s2" style="text-align:right;display: inline-block;margin: 0;padding: 0;"><t t-esc="desde"/></p>
+                                        </td>
+                                        <td style="border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                            <span class="s2" style="display: inline-block;margin: 0;padding: 0;">HASTA:</span>
+                                            <p class="s2" style="text-align:right;display: inline-block;margin: 0;padding: 0;"><t t-esc="hasta"></t></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 75%;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <span class="s2" style="display: inline-block; margin: 0;padding: 0;">PRODUCTO:</span>
+                                        <span class="s4" style="display: inline-block;margin: 0;padding: 0;"><t t-esc="product_name"/></span>
+                                    </td>
+                                    <td style="width: 17%;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <span class="s2" style="display: inline-block;margin: 0;padding: 0;">Saldo Unidades Inicial:</span>
+                                    </td>
+                                    <td style="width: 13%; text-align:right;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <p class="s3" style="display: inline-block;margin: 0;padding: 0;"><t t-esc="'{:.2f}'.format(qty_product)"/></p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="width: 100%;">
+                                <tr>
+
+                                    <td style="width: 25%;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <span class="s2" style="display: inline-block; margin: 0;padding: 0;">CODIGO:</span>
+                                        <span class="s4" style="display: inline-block;margin: 0;padding: 0;"><t t-esc="product_code"/></span>
+                                    </td>
+                                    <td style="width: 50%;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <span class="s2" style="display: inline-block; margin: 0;padding: 0;">Unidad De Medida o Presentacion:</span>
+                                        <span class="s4" style="display: inline-block;margin: 0;padding: 0;">X 240 ML</span>
+                                    </td>
+                                    <td style="width: 17%;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <span class="s2" style="display: inline-block;margin: 0;padding: 0;">Saldo Costo Inicial:</span>
+                                    </td>
+                                    <td style="width: 13%; text-align:right;border-top-style:solid;border-top-width:0pt;border-top-color:#ffffff;border-left-style:solid;border-left-width:0pt;border-left-color:#ffffff;border-bottom-style:solid;border-bottom-color:#ffffff;border-right-style:solid;border-right-color:#ffffff">
+                                        <t t-set="saldo_costo_inicial" t-value="qty_product * producto_costo"/>
+                                        <p class="s3" style="display: inline-block;margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(saldo_costo_inicial)"/></p>
+                                    </td>
+                                </tr>
+                            </table>
+                    </t>
+
+                </div>
+            </div>
+            <div class="article o_report_layout_standard">
+                <t t-out="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div class="row">
+                    <p style="font-size: 30px"><t t-esc="formatted_time"/></p>
+                    <span style="display:block; border-bottom: 4px solid black; width: 500px;position:absolute;top:10.587973px;left:1500.000000px;"/>
+                    <span style="position:absolute; white-space: nowrap;position:absolute;top:15.587973px;left:1670.000000px;font-size:28px">Contador</span>
+                </div>
+            </div>
+
+    </template>
+
+    <template id="reporte_control_de_inventario">
+        <t t-call="web.html_container">
+            <t t-call="wtl_reporte_control_de_inventario.external_ok">
+                <link rel="stylesheet" href="/wtl_reporte_control_de_inventario/static/src/css/style.css"/>
+                <t t-set="page_size" t-value="20"/>
+                <t t-set="records_per_chunk" t-value="27"/>
+                <t t-set="record_chunks" t-value="registros and [registros[i:i+records_per_chunk] for i in range(0, len(registros), records_per_chunk)] or []"/>
+                
+                <t t-set="saldo_acumulado" t-value="qty_product"/>
+                <t t-set="initial_cost" t-value="qty_product * producto_costo"/>
+                <t t-set="costo_acumulado" t-value="initial_cost"/>
+
+                <t t-set="correlativo_acumulado" t-value="1"/>
+
+                <t t-set="entradas_unidades" t-value="0"/>
+                <t t-set="salidas_unidades" t-value="0"/>
+
+                <t t-set="entradas_costo_total" t-value="0"/>
+                <t t-set="salidas_costo_total" t-value="0"/>
+                
+                <t t-set="saldo_unidades" t-value="0"/>
+
+                <t t-set="saldo_en_precio_de_costo_total" t-value="0"/>
+
+                <t t-foreach="record_chunks" t-as="chunk">
+                    <table style="width: 100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td rowspan="2" style="width: 4%;padding-left:3px">
+                                            <p> Correl  lativo</p>
+                                        </td>
+                                        <td rowspan="2" style="width: 6%;padding-left:16px;">
+                                            <span>Fecha de Operacion</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 13%;text-align:center">
+                                            <span># de comprobante</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 13%;text-align:center">
+                                            <span>Nombre o Razon social Proveedor/cliente</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 7%;text-align:center;">
+                                            <span>Nacionalidad Proveedor</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 4%;text-align:center;">
+                                            <span>Ref. Libro de costos</span>
+                                        </td>
+                                        <td colspan="3" style="width: 14%; text-align:center">
+                                            <span>Entradas:</span>
+                                        </td>
+                                        <td colspan="3" style="width: 14%; text-align:center">
+                                            <span>Salidas:</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 4%;text-align:center;">
+                                            <span>Saldo en Unidades</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 4%;text-align:center;">
+                                            <span>Precio Unitario</span>
+                                        </td>
+                                        <td rowspan="2" style="width: 4%;text-align:center;">
+                                            <span>Saldo en Precio de Costo</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <span>Unidades</span>
+                                        </td>
+                                        <td style="text-align:center;width: 4%;">
+                                            <span>Costo Unitario</span>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <span>Costo Total</span>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <span>Unidades</span>
+                                        </td>
+                                        <td style="text-align:center;width: 4%;">
+                                            <span>Costo Unitario</span>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <span>Costo Total</span>
+                                        </td>
+                                    </tr>
+                        <t t-foreach="chunk" t-as="line">
+                            <t t-set="costo_producto_actual" t-value="producto_costo"/>
+                            <t t-set="_costo_inicial" t-value="qty_product * producto_costo"/>
+                            <t t-set="_saldo_costo_inicial" t-value="'{:,.2f}'.format(_costo_inicial)"/>
+                            <tr style="margin: 0px; padding: 0px; height: 1pt">
+
+                                <!--Correlativo-->
+                                <td style="width: 15pt;height: 5px;padding-left:3px; text-align: center">
+                                    <p t-esc="correlativo_acumulado" style="margin: 0;padding: 0;"/>
+                                    <t t-set="correlativo" t-value="correlativo_acumulado + 1"/>
+                                    <t t-set="correlativo_acumulado" t-value="correlativo"/>
+                                </td>
+
+                                <!--Fecha de Operacion-->
+                                <td style="text-align:center;width: 6%;height: 10px;">
+                                    <p><t t-esc="line['create_date']" style="margin: 0;padding: 0;"></t></p>
+                                </td>
+
+                                <!--# de comprobante-->
+
+                                <td style="text-align:center;width: 6%;height: 10px;">
+                                </td>
+
+                                <!--Nombre o razon social proveedor/cliente-->
+                                <td style="padding-left:10px;height: 10px;">
+                                    <span t-if="line['proveedor_o_cliente']">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="line['proveedor_o_cliente'][1]"></t></p>
+                                    </span>
+                                </td>
+
+                                <!--Nacionalidad Proveedor-->
+
+
+                                <td style="padding-left:10px;height: 10px;">
+                                    <p style="margin: 0;padding: 0;"><t t-esc="line['nacionalidad']"></t></p>
+                                </td>
+
+                                <!--Ref. Libro de costos-->
+
+                                <td style="height: 10px;">
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="line['quantity']"></t></p>
+                                        <t t-set="entradas_unidades" t-value="entradas_unidades + line['quantity']"/>
+                                    </span>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] >= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:.2f}'.format(line['quantity'] * costo_producto_actual)"/></p>
+                                        <t t-set="entradas_costo_total" t-value="entradas_costo_total + line['quantity'] * costo_producto_actual"/>
+                                    </span>
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="(abs(line['quantity']))"></t></p>
+                                        <t t-set="salidas_unidades" t-value="salidas_unidades + line['quantity']"/>
+                                    </span>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span t-if="line['quantity'] &lt;= 0">
+                                        <t t-set="cantidad_positiva" t-value="line['quantity'] * -1"/>
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:.2f}'.format(cantidad_positiva * costo_producto_actual)"/></p>
+                                        <t t-set="salidas_costo_total" t-value="salidas_costo_total + line['quantity'] * costo_producto_actual"/>
+                                    </span>
+                                </td>
+
+                                <!--Saldo en Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <span style="margin: 0;padding: 0;">
+                                        <t t-set="saldo_actual" t-value="line['quantity']"/>
+                                        <p style="margin: 0;padding: 0;">
+                                            <t t-if="saldo_actual >= 1">
+                                                <t t-esc="saldo_actual + saldo_acumulado"/>
+                                                <t t-set="saldo_acumulado" t-value="saldo_actual + saldo_acumulado"/>
+                                                <t t-set="saldo_unidades" t-value="saldo_unidades + saldo_acumulado"/>
+                                            </t>
+                                            <t t-if="saldo_actual &lt; 0">
+                                                <t t-set="saldo_actual_positivo" t-value="saldo_actual * -1"/>
+                                                <t t-esc="saldo_acumulado - saldo_actual_positivo "/>
+                                                <t t-set="saldo_acumulado" t-value="saldo_acumulado - saldo_actual_positivo"/>
+                                                <t t-set="saldo_unidades" t-value="saldo_unidades + saldo_acumulado"/>
+                                            </t>
+                                        </p>
+                                    </span>
+                                </td>
+
+                                <!--Precio Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span>
+                                        <p style="margin: 0;padding: 0;"><t t-esc="'{:,.2f}'.format(producto_costo)"/></p>
+                                    </span>
+                                </td>
+
+                                <!--Saldo en Precio de Costo-->
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <span style="margin: 0;padding: 0;">
+                                        <t t-set="primer_costo_total" t-value="line['quantity'] * producto_costo"/> <!--14.00-->
+                                        <t t-set="saldo_en_precio_de_costo" t-value="costo_acumulado + primer_costo_total"/>
+                                        <t t-esc="'{:.2f}'.format(saldo_en_precio_de_costo)"/>
+                                        <t t-set="costo_acumulado" t-value="saldo_en_precio_de_costo"/>
+                                        <t t-set="saldo_en_precio_de_costo_total" t-value="saldo_en_precio_de_costo_total + costo_acumulado"/>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <!--TOTALES-->
+                        </t>
+                        <tr>
+
+                                <!--Correlativo-->
+                                <td style="width: 15pt;height: 10px;padding-left:3px; text-align: center" colspan="3">
+                                    <strong>PASAN</strong>
+                                </td>
+
+                                <!--Nombre o razon social proveedor/cliente-->
+                                <td style="padding-left:10px;height: 10px;">
+                                </td>
+
+                                <!--Nacionalidad Proveedor-->
+
+
+                                <td style="padding-left:10px;height: 10px;">
+                                </td>
+
+                                <!--Ref. Libro de costos-->
+
+                                <td style="height: 10px;">
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(entradas_unidades)"/>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: center;height: 15px;height: 10px;">
+                                    0.00
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(entradas_costo_total)"/>
+                                </td>
+
+                                <!--Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(abs(salidas_unidades))"/>
+                                </td>
+
+                                <!--Costo Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    0.00
+                                </td>
+
+                                <!--Costo Total-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(abs(salidas_costo_total))"/>
+                                </td>
+
+                                <!--Saldo en Unidades-->
+
+                                <td style="text-align: center;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(saldo_unidades)"/>
+                                </td>
+
+                                <!--Precio Unitario-->
+
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    0.00
+                                </td>
+
+                                <!--Saldo en Precio de Costo-->
+                                <td style="text-align: right; padding-right: 7px;height: 10px;">
+                                    <t t-esc="'{:.2f}'.format(saldo_en_precio_de_costo_total).replace('-', '')"/>
+                                </td>
+
+
+
+                            </tr>
+                    </table>
+                    <t t-if="chunk != record_chunks[-1]">
+                        <div style="page-break-after: always;"></div>
+                    </t>
+                </t>
+            </t>
+            </t>
+    </template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.reception.vehicle,ReceptionVehicle,vehicle_reception.model_reception_vehicle,base.group_user,1,1,1,1
+access.vehicle.reception.line,VehicleReceptionLine,vehicle_reception.model_vehicle_reception_line,base.group_user,1,1,1,1
+access.vehicle.reception.line,VehicleReceptionLine,vehicle_reception.model_vehicle_reception_line,base.group_user,1,1,1,1
+access.checklist.log,CheckListLog,vehicle_reception.model_check_list_log,base.group_user,1,1,1,1

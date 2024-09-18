@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_hr_employee_inherit_ok" model="ir.ui.view">
+            <field name="name">view.hr.employee.inherit.ok</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+		        <xpath expr="//notebook" position="inside">
+                    <page string="Taller">
+                        <group>
+                            <field name="is_car_repair"/>
+                            <field name="company_branch" attrs="{'invisible':[('is_car_repair','!=', True)]}"/>
+                        </group>
+                        <group>
+                            <field name="is_supervisor" attrs="{'invisible':[('is_car_repair','!=', True)]}"/>
+                            <field name="supervisor_code" attrs="{'invisible':[('is_supervisor','!=', True)]}"/>
+                        </group>
+                        <group>
+                            <field name="is_driver" attrs="{'invisible':[('is_car_repair','!=', True)]}"/>
+                        </group>
+                        <group>
+                            <field name="is_mechanic" attrs="{'invisible':[('is_car_repair','!=', True)]}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+</odoo>

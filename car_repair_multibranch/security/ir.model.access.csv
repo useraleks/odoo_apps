@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.fleet.repair.checklist.documental,FleetRepairChecklistDocumental,car_repair_multibranch.model_fleet_repair_checklist_documental,base.group_user,1,1,1,1
+access.fleet.repair.checklist.piloto,FleetRepairChecklistPiloto,car_repair_multibranch.model_fleet_repair_checklist_piloto,base.group_user,1,1,1,1
+access.fleet.repair.checklist.exterior,FleetRepairChecklistExterior,car_repair_multibranch.model_fleet_repair_checklist_exterior,base.group_user,1,1,1,1
+access.fleet.repair.checklist.interior,FleetRepairChecklistInterior,car_repair_multibranch.model_fleet_repair_checklist_interior,base.group_user,1,1,1,1
+access.fleet.repair.checklist.complementos,FleetRepairChecklistComplementos,car_repair_multibranch.model_fleet_repair_checklist_complementos,base.group_user,1,1,1,1
+access.fleet.repair.checklist.tanque,FleetRepairChecklistTanque,car_repair_multibranch.model_fleet_repair_checklist_tanque,base.group_user,1,1,1,1
+access.fleet.repair.checklist.chasis,FleetRepairChecklistChasis,car_repair_multibranch.model_fleet_repair_checklist_chasis,base.group_user,1,1,1,1

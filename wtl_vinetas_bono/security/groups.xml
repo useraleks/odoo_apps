@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="module_wtl_vinetas_bono">
+        <field name="name">Viñeta bono</field>
+        <field name="sequence">103</field>
+    </record>
+
+    <record id="group_vineta_bono_access" model="res.groups">
+        <field name="name">Acceso al modulo de viñeta bono</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_vineta_bono_payment_access" model="res.groups">
+        <field name="name">Acceso al modulo de pago de viñetas bono</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+    
+    <record id="group_show_vineta_window_product" model="res.groups">
+        <field name="name">Configurar productos para viñetas bono</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_show_vineta_window_partner" model="res.groups">
+        <field name="name">Configurar Clientes para viñetas bono</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_access_reprint" model="res.groups">
+        <field name="name">Dar acceso a usuarios a reimprimir (Solo admin)</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_access_print_vineta" model="res.groups">
+        <field name="name">Dar acceso a imprimir la viñeta</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_access_contact_vinetas_bono" model="res.groups">
+        <field name="name">Ver boton viñetas bono en contactos</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_payment_defeated_vinetas" model="res.groups">
+        <field name="name">Poder marcar como anuladas las viñetas</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_authorize_vineta" model="res.groups">
+        <field name="name">Poder autorizar viñetas en facturacion</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+
+    <record id="group_set_draft_vinetas_payment" model="res.groups">
+        <field name="name">Establecer a "borrador" el informe de pago de viñetas</field>
+        <field name="category_id" ref="module_wtl_vinetas_bono"/>
+    </record>
+</odoo>

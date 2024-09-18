@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contenedor_wt_contenedor_wt,contenedor_wt.contenedor_wt,model_contenedor_wt_contenedor_wt,base.group_user,1,1,1,1

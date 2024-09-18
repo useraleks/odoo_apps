@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report 
+            id="action_vinetas_bono_report"
+            string="Vinetas bono"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="wtl_vinetas_bono.vinetas_bono_template"
+            name="wtl_vinetas_bono.vinetas_bono_template"
+            paperformat="wtl_vinetas_bono.vinetas_bono_format"/>
+
+</odoo>

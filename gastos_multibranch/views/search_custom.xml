@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="hr_expense_seach_inh" model="ir.ui.view">
+            <field name="name">hr_expense_seach_inh</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search[1]/field[@name='name']" position="before">
+                    <field name="no_contenedor"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

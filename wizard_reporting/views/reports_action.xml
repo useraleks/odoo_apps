@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report 
+            id="action_cuadro_de_despachos"
+            string="Cuadro De Despachos"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="wizard_reporting.reporte_cuadro_de_despachos"
+            name="wizard_reporting.reporte_cuadro_de_despachos"
+            paperformat="wizard_reporting.formato_cuadro_despachos"
+        />
+
+    <report 
+            id="action_cuadro_de_despachos_excel"
+            string="Cuadro De Despachos Excel"
+            model="sale.order"
+            report_type="xlsx"
+            file="wizard_reporting.reporte_cuadro_de_despachos_excel"
+            name="wizard_reporting.reporte_cuadro_de_despachos_excel"
+        />
+
+</odoo>

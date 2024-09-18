@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+        <record id="view_vineta_bono_form" model="ir.ui.view">
+            <field name="name">view_vineta_bono_form</field>
+            <field name="model">vineta.bono</field>
+            <field name="arch" type="xml">
+                <form string="Gestion de Viñetas" create="false" delete="false" duplicate="false">
+                    <header>
+                        <field name="state" widget="statusbar" />
+                         <button name="action_mark_as_paid" string="Marcar como 'Pagado'" type="object" class="btn-primary" data-hotkey="g" invisible="1"/>
+                         <button name="action_mark_as_defeated" string="Anular" type="object" class="btn-primary" data-hotkey="g" groups="wtl_vinetas_bono.group_payment_defeated_vinetas"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_tittle">
+                            <h1>
+                                <field name="name" readonly="1"/>      
+                            </h1>
+                        </div>
+                        <group name="group_tup">
+                            <group name="group_left" readonly="1">
+                                <separator string="Informacion de la viñeta"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="partner_id" readonly="1"/>
+                                <field name="price" class="oe_inline" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}" readonly="1"/>
+                                <field name="invoice_ids" widget="many2many_tags" readonly="1"/>
+                                <field name="lot_id" readonly="1"/>
+                                <field name="payment_date" readonly="1"/>
+                                <field name="searchable_name" readonly="1" invisible="1"/>
+                                <field name="manufacturer_id" readonly="1"/>
+                            </group>
+                            <group name="group_right" readonly="1">
+                                <separator string="Otra informacion"/>
+                                <field name="generated_by" class="o_task_user_field" widget="many2one_avatar_user" readonly="1"/>
+                                <field name="sales_person" readonly="1"/>
+                                <field name="date_begin" readonly="1"/>
+                                <field name="date_end" readonly="1"/>
+                                <field name="barcode" readonly="1"/>
+                                <field name="origin_id" readonly="1"/>
+                                <field name="delivery_order" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_vineta_bono_tree" model="ir.ui.view">
+            <field name="name">view_vineta_bono_tree</field>
+            <field name="model">vineta.bono</field>
+            <field name="arch" type="xml">
+                <tree string="Gestion de Viñetas" default_order="name desc" create="false" delete="false" duplicate="false">
+                    <header>
+                        <button name="action_mark_as_defeated" string="Anular" type="object" class="oe_highlight" groups="wtl_vinetas_bono.group_payment_defeated_vinetas"/>
+                    </header>
+                    <field name="name"/>
+                    <field name="price" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}" sum="Total"/>
+                    <field name="product_id"/>
+                    <field name="manufacturer_id" readonly="1"/>
+                    <field name="payment_date" readonly="1"/>
+                    <field name="partner_id" />
+                    <field name="date_begin" optional="show"/>
+                    <field name="date_end" optional="show"/>
+                    <field name="generated_by" optional="show"/>
+                    <field name="state" optional="show" widget="badge" decoration-success="state == 'paid'" decoration-danger="state=='defeated'"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

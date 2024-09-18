@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="seq_rental_quotation" model="ir.sequence">
+            <field name="name">Repair Sequence</field>
+            <field name="code">fleet.repair</field>
+            <field name="prefix">T_</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_fleet_workorder_id" model="ir.sequence">
+            <field name="name">fleet Workorder</field>
+            <field name="code">fleet.workorder</field>
+            <field name="prefix">WO</field>
+            <field name="padding">5</field>
+        </record>
+
+    </data>
+    
+
+</odoo>

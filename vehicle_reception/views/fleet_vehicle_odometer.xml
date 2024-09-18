@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_fleet_vehicle_odometer_tree" model="ir.ui.view">
+            <field name="name">view_fleet_vehicle_odometer_tree</field>
+            <field name="model">fleet.vehicle.odometer</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_odometer_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='driver_id']" position="after">
+                    <field optional="show" name="supervisor_id"/>
+                    <field optional="show" name="driver"/>
+                    <field optional="show" name="ref_reception"/>
+                    <field optional="show" name="fecha"/>
+                </xpath>
+                <xpath expr="//field[@name='driver_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+</odoo>

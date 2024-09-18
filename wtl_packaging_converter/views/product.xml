@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">wtl_packaging_converter.product_template_form_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="qty_box_available"/>
+                <field name="qty_for_box"/>
+                <field name="qty_for_blister"/>
+            </xpath>
+            <xpath expr="//button[@name='action_open_quants']" position="after">
+                <button type="object" name="show_qty_boxes" class="oe_stat_button" icon="fa-cube">
+                    <div class="o_field_widget o_stat_info mr4">
+                        <span class="o_stat_text">Cajas:</span>
+                        <span class="o_stat_text">Unidades:</span>
+                    </div>
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="bx_available"/>
+                        </span>
+                        <span class="o_stat_value">
+                            <field name="units_available"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">wtl_packaging_converter.product.product_template_tree_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='qty_available']" position="after">
+                <field name="bx_available"/>
+                <field name="units_available"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="product_normal_form_view_converter_box" model="ir.ui.view">
+        <field name="name">product_normal_form_view_converter_box</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="qty_box_available"/>
+                <field name="qty_for_box"/>
+                <field name="qty_for_blister"/>
+            </xpath>
+            <xpath expr="//button[@name='action_open_quants']" position="after">
+                <button type="object" name="show_qty_boxes" class="oe_stat_button" icon="fa-cube">
+                    <div class="o_field_widget o_stat_info mr4">
+                        <span class="o_stat_text">Cajas:</span>
+                        <span class="o_stat_text">Unidades:</span>
+                    </div>
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="bx_available"/>
+                        </span>
+                        <span class="o_stat_value">
+                            <field name="units_available"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="product_product_stock_tree_packaging_converter" model="ir.ui.view">
+        <field name="name">product_product_stock_tree_packaging_converter</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='qty_available']" position="after">
+                <field name="bx_available"/>
+                <field name="units_available"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="product_template_kanban_view_packaging" model="ir.ui.view">
+        <field name="name">product_template_kanban_view_packaging</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="after">
+                <div name="qty_box_available_" class="mt-1">
+                    <field name="qty_box_available"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
